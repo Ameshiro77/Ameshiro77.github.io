@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"www.ameshiro77.cn","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。​		现在要求这个式子：$$\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}}$$​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合">
+  <meta name="description" content="​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。​		现在要求这个式子：$$\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}$$​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于(Ax-b)二范数平方的求导">
 <meta property="og:url" content="https://www.ameshiro77.cn/2023/03/25/Ax-b/index.html">
 <meta property="og:site_name" content="雨白的博客小屋">
-<meta property="og:description" content="​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。​		现在要求这个式子：$$\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}}$$​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合">
+<meta property="og:description" content="​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。​		现在要求这个式子：$$\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}$$​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-25T07:39:25.000Z">
-<meta property="article:modified_time" content="2023-03-25T09:22:44.603Z">
+<meta property="article:modified_time" content="2023-03-25T09:32:59.353Z">
 <meta property="article:author" content="Ameshiro">
 <meta name="twitter:card" content="summary">
 
@@ -85,7 +85,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="تشغيل شريط التصفح">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -114,12 +114,12 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Startseite</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archiv</a>
 
   </li>
   </ul>
@@ -171,10 +171,10 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">نُشر في</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
-              <time title="أُنشأ: 2023-03-25 15:39:25 / عُدل: 17:22:44" itemprop="dateCreated datePublished" datetime="2023-03-25T15:39:25+08:00">2023-03-25</time>
+              <time title="Erstellt: 2023-03-25 15:39:25 / Geändert am: 17:32:59" itemprop="dateCreated datePublished" datetime="2023-03-25T15:39:25+08:00">2023-03-25</time>
             </span>
 
           
@@ -188,13 +188,13 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。<br>​		现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2&#x3D;(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​		运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}&#x3D;\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​		之后矩阵乘法：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​	    注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}&#x3D;\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​	    这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>$$</p>
+        <p>​		在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。<br>​		现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​		虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>||\mathbf{Ax}-\mathbf{b}|^2_2&#x3D;(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​		运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}&#x3D;\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​		之后矩阵乘法：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​	    注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}&#x3D;\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​	    这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>$$</p>
 <p>$$<br>\hspace{1.1em}②\hspace{1em} \dfrac{\mathrm{d}(\mathbf{a}^T\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; \dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{a})}{\mathrm{d}\mathbf{x}}&#x3D; \mathbf{a}<br>$$</p>
 <p>​		</p>
 <p>​		两个的证明其实不难，因为分子都是标量，本质就是把这个标量用 $\mathbf{x}$ 中的分量表示出来，然后利用标量对矢量求导的定义就行了。我们把这两条规则代入：<br>$$<br>\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{A}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}^T\mathbf{A}+(\mathbf{A}^T\mathbf{A})^T)\hspace{0.2em}\mathbf{x} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x}<br>$$</p>
 <p>$$<br>\dfrac{\mathrm{d}(2\mathbf{x}^T\mathbf{A}^T\mathbf{b})}{\mathrm{d}\mathbf{x}}&#x3D;2 \dfrac{\mathrm{d}(\mathbf{b}^T\mathbf{A}\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{b}<br>$$</p>
-<p>​		由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$</p>
-<p>​		由于 $|\mathbf{Ax}-\mathbf{b}|^2_2$ 是凸函数（一个坑，这个没讲怎么证），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：</p>
+<p>​		由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$</p>
+<p>​		由于 $||\mathbf{Ax}-\mathbf{b}||^2_2$ 是凸函数（一个坑，这个没讲怎么证），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：</p>
 <p>$$<br>\mathbf{x}&#x3D;(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}<br>$$</p>
 <hr>
 <p>​		由于两年前学的线代几乎全忘光了，也没有接触过向量函数的微分，所以第一次见到它的时候就有点懵逼。不过感谢一些大佬的帮忙，让我对此有点入门；同时也感谢amekui教我怎么用latex写公式，这篇博客是我第一次接触latex，全篇都是自己手打出来的，感觉好累T^T (hexo竟然不能\newline 害的我又改了一下)</p>
@@ -213,10 +213,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2023/03/25/finally-get/" rel="prev" title="终于搭完框架了..">
-      <i class="fa fa-chevron-left"></i> 终于搭完框架了..
+    <a href="/2023/03/25/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2023/03/25/finally-get/" rel="next" title="终于搭完框架了..">
+      终于搭完框架了.. <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -266,10 +269,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          المحتويات
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          عام
+          Übersicht
         </li>
       </ul>
 
@@ -289,7 +292,7 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">3</span>
-          <span class="site-state-item-name">المقالات</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
   </nav>
@@ -322,7 +325,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Ameshiro</span>
 </div>
-  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
         

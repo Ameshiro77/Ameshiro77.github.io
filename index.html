@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"www.ameshiro77.cn","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"www.ameshiro77.cn","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="人生美哉">
@@ -143,6 +143,67 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://www.ameshiro77.cn/2023/03/25/Ax-b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Ameshiro">
+      <meta itemprop="description" content="人生美哉">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雨白的博客小屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/03/25/Ax-b/" class="post-title-link" itemprop="url">关于||Ax-b||^2的求导</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">نُشر في</span>
+              
+
+              <time title="أُنشأ: 2023-03-25 15:39:25 / عُدل: 16:52:14" itemprop="dateCreated datePublished" datetime="2023-03-25T15:39:25+08:00">2023-03-25</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>​        在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。<br>​        现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​        虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2=(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​        运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}=\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​        之后矩阵乘法：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2=\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​        注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}=\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>|\mathbf{Ax}-\mathbf{b}|^2_2=\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​        这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} = (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>\newline<br>\hspace{1.1em}②\hspace{1em} \dfrac{\mathrm{d}(\mathbf{a}^T\mathbf{x})}{\mathrm{d}\mathbf{x}} = \dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{a})}{\mathrm{d}\mathbf{x}}= \mathbf{a}<br>$$<br>​        两个的证明其实不难，因为分子都是标量，本质就是把这个标量用 $\mathbf{x}$ 中的分量表示出来，然后利用标量对矢量求导的定义就行了。我们把这两条规则代入：<br>$$<br>\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{A}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} = (\mathbf{A}^T\mathbf{A}+(\mathbf{A}^T\mathbf{A})^T)\hspace{0.2em}\mathbf{x} = 2\mathbf{A}^T\mathbf{A}\mathbf{x}<br>\newline<br>\dfrac{\mathrm{d}(2\mathbf{x}^T\mathbf{A}^T\mathbf{b})}{\mathrm{d}\mathbf{x}}=2 \dfrac{\mathrm{d}(\mathbf{b}^T\mathbf{A}\mathbf{x})}{\mathrm{d}\mathbf{x}} = 2\mathbf{A}^T\mathbf{b}<br>$$<br>​        由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}|\mathbf{Ax}-\mathbf{b}|^2_2}{\mathrm{d}\mathbf{x}} = 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$<br>       由于 $|\mathbf{Ax}-\mathbf{b}|^2_2$ 是凸函数（一个坑，这个没讲怎么证），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：<br>$$<br>\mathbf{x}=(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}<br>$$</p>
+<hr>
+<p>​        由于两年前学的线代几乎全忘光了，也没有接触过向量函数的微分，所以第一次见到它的时候就有点懵逼。不过感谢一些大佬的帮忙，让我对此有点入门；同时也感谢amekui教我怎么用latex写公式，这篇博客是我第一次接触latex，全篇都是自己手打出来的，感觉好累T^T</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -400,7 +461,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
@@ -434,7 +495,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Ameshiro</span>
 </div>
-  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
   </div>
 
         
@@ -460,7 +521,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/pisces.js"></script>
+<script src="/js/schemes/muse.js"></script>
 
 
 <script src="/js/next-boot.js"></script>

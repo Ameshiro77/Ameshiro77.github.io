@@ -8,9 +8,50 @@
       <link href="/2023/03/25/Ax-b/"/>
       <url>/2023/03/25/Ax-b/</url>
       
-        <content type="html"><![CDATA[<p>​在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。<br>​现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}&#x3D;\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​之后矩阵乘法：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}&#x3D;\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>$$</p><p>$$<br>\hspace{1.1em}②\hspace{1em} \dfrac{\mathrm{d}(\mathbf{a}^T\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; \dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{a})}{\mathrm{d}\mathbf{x}}&#x3D; \mathbf{a}<br>$$</p><p>​</p><p>​两个的证明其实不难，因为分子都是标量，本质就是把这个标量用 $\mathbf{x}$ 中的分量表示出来，然后利用标量对矢量求导的定义就行了。我们把这两条规则代入：<br>$$<br>\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{A}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}^T\mathbf{A}+(\mathbf{A}^T\mathbf{A})^T)\hspace{0.2em}\mathbf{x} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x}<br>$$</p><p>$$<br>\dfrac{\mathrm{d}(2\mathbf{x}^T\mathbf{A}^T\mathbf{b})}{\mathrm{d}\mathbf{x}}&#x3D;2 \dfrac{\mathrm{d}(\mathbf{b}^T\mathbf{A}\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $ ||\mathbf{Ax}-\mathbf{b}||^2_2 $ 是凸函数（证明海森矩阵半正定，一阶导数我们已经求出来了），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：</p><p>$$<br>\mathbf{x}&#x3D;(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}<br>$$</p><hr><p>​由于两年前学的线代几乎全忘光了，也没有接触过向量函数的微分，所以第一次见到它的时候就有点懵逼。不过感谢一些大佬的帮忙，让我对此有点入门；同时也感谢amekui教我怎么用latex写公式，这篇博客是我第一次接触latex，全篇都是自己手打出来的，感觉好累T^T (hexo竟然不能\newline 害的我又改了一下)</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="其实是一个基础问题"><a href="#其实是一个基础问题" class="headerlink" title="其实是一个基础问题"></a>其实是一个基础问题</h2><p>​在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。</p><p>​现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}&#x3D;\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​之后矩阵乘法：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}&#x3D;\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>$$</p><p>$$<br>\hspace{1.1em}②\hspace{1em} \dfrac{\mathrm{d}(\mathbf{a}^T\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; \dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{a})}{\mathrm{d}\mathbf{x}}&#x3D; \mathbf{a}<br>$$</p><p>​</p><p>​两个的证明其实不难，因为分子都是标量，本质就是把这个标量用 $\mathbf{x}$ 中的分量表示出来，然后利用标量对矢量求导的定义就行了。我们把这两条规则代入：<br>$$<br>\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{A}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}^T\mathbf{A}+(\mathbf{A}^T\mathbf{A})^T)\hspace{0.2em}\mathbf{x} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x}<br>$$</p><p>$$<br>\dfrac{\mathrm{d}(2\mathbf{x}^T\mathbf{A}^T\mathbf{b})}{\mathrm{d}\mathbf{x}}&#x3D;2 \dfrac{\mathrm{d}(\mathbf{b}^T\mathbf{A}\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $ ||\mathbf{Ax}-\mathbf{b}||^2_2 $ 是凸函数（证明海森矩阵半正定，一阶导数我们已经求出来了），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：</p><p>$$<br>\mathbf{x}&#x3D;(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}<br>$$</p><hr><p>​由于两年前学的线代几乎全忘光了，也没有接触过向量函数的微分，所以第一次见到它的时候就有点懵逼。不过感谢一些大佬的帮忙，让我对此有点入门；同时也感谢amekui教我怎么用latex写公式，这篇博客是我第一次接触latex，全篇都是自己手打出来的，感觉好累T^T (hexo竟然不能\newline 害的我又改了一下)</p>]]></content>
       
       
+      <categories>
+          
+          <category> CV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 计算机视觉 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于(Ax-b)二范数平方为凸函数的证明</title>
+      <link href="/2023/03/25/Ax-b2/"/>
+      <url>/2023/03/25/Ax-b2/</url>
+      
+        <content type="html"><![CDATA[<p>​上文我们求出了<br>$$<br> \dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}</p><p>$$<br>​回想高数中，证明凸函数就是看二阶导数（如果存在）大于等于零。映射到矩阵，就是看其海森矩阵是否半正定。</p><p>​海森矩阵也就是对这个结果进一步求导，结果显然是 $\mathbf{2A}^T\mathbf{A}$ , 而如果一个矩阵能够被写成  $\mathbf{A}^T\mathbf{A}$ 或  $\mathbf{A}\mathbf{A}^T$ ,那么他就是半正定的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 计算机视觉 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -33,9 +74,20 @@
     
     
     <entry>
-      <title>archives</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title></title>
+      <link href="/404.html"/>
+      <url>/404.html</url>
+      
+        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -44,11 +96,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/404.html"/>
-      <url>/404.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
-        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -66,9 +129,9 @@
     
     
     <entry>
-      <title>categories</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

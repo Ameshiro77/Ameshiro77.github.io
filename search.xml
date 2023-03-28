@@ -8,7 +8,7 @@
       <link href="/2023/03/28/Ax-b2/"/>
       <url>/2023/03/28/Ax-b2/</url>
       
-        <content type="html"><![CDATA[<p>​上文我们求出了<br>$$<br> \dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}</p><p>$$<br>​回想高数中，证明凸函数就是看二阶导数（如果存在）大于等于零。映射到矩阵，就是看其海森矩阵是否半正定。</p><p>​海森矩阵也就是对这个结果进一步求导，结果显然是 $\mathbf{2A}^T\mathbf{A}$ , 而如果一个矩阵能够被写成  $\mathbf{A}^T\mathbf{A}$ 或  $\mathbf{A}\mathbf{A}^T$ ,那么他就是半正定的。</p>]]></content>
+        <content type="html"><![CDATA[<p>​上文我们求出了<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$<br>​回想高数中，证明凸函数就是看二阶导数（如果存在）大于等于零。映射到矩阵，就是看其海森矩阵是否半正定。</p><p>​海森矩阵也就是对这个结果进一步求导，结果显然是 $\mathbf{2A}^T\mathbf{A}$ , 而如果一个矩阵能够被写成  $\mathbf{A}^T\mathbf{A}$ 或  $\mathbf{A}\mathbf{A}^T$ ,那么他就是半正定的。</p>]]></content>
       
       
       <categories>
@@ -85,17 +85,6 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -107,9 +96,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -118,9 +107,20 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

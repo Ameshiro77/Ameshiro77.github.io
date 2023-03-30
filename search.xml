@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Harris角点检测中的公式推导</title>
+      <link href="/2023/03/30/Harris1/"/>
+      <url>/2023/03/30/Harris1/</url>
+      
+        <content type="html"><![CDATA[<p>​在Harris角点检测中，我们要算两个窗口的差。首先，两个点之间的差为：<br>$$<br>S &#x3D;f\left(x_{i}, y_{i}\right)-f\left(x_{i}+\Delta x, y_{i}+\Delta y\right)<br>$$<br>​其中f是像素灰度值。为避免误差，取平方，之后在窗口内求和，得：</p><p><img src="https://s2.loli.net/2023/03/30/NVcB7HOImwJlf84.png" alt="image-20230330204656439"></p><p>​刚拿到这个式子，可能从①到②不知道怎么来的。其实这里是应用了泰勒展开，首先我们知道对于一维函数来说，其泰勒展开式子为：<br>$$<br>f(x+h)&#x3D;f(x)+hf’(x)+\frac{h^2}{2!}f’’(x)+o(h^2)<br>$$<br>​一般来说，展开到两阶就行了。但是对于更普适的情况，令 $f(x)$ 是 $\mathbb{R^n}→R$ 的函数，则其泰勒展开式子为：<br>$$<br>f(\mathbf{x}+\mathbf{h})&#x3D;f(\mathbf{x})+\mathbf{h}^T\nabla f(\mathbf{x})+<br>\frac{\mathbf{h}^T}{2!}\nabla^2 f(\mathbf{x})\mathbf{h}+o(||h||^2)<br>$$<br>​可能会有同学觉得这不是h的转置乘以梯度吗，图里公式怎么是梯度的转置乘以h了？其实这两个是相等的，因为他们结果是标量，标量转置等于自己。</p><p>​对于一阶梯度来说，其结果就是对每个自变量求偏导后组成新向量。而对于二阶梯度，其结果叫海森矩阵，其形式为：</p><p><img src="https://s2.loli.net/2023/03/30/blZ3FrAfxyMUcVY.png" alt="image-20230330210859073"></p><p>​之后的步骤都比较明显了，最后我们得到的M长这样：</p><p><img src="C:\Users\yubai\AppData\Roaming\Typora\typora-user-images\image-20230330211136239.png" alt="image-20230330211136239"></p><p>​M是一个半正定矩阵，证明请读者自行练习。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> CV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ameshiro的像素RPG小仓库！</title>
       <link href="/2023/03/29/gamerepo/"/>
       <url>/2023/03/29/gamerepo/</url>
@@ -110,9 +137,9 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -132,9 +159,9 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -143,9 +170,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

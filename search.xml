@@ -5,8 +5,8 @@
     
     <entry>
       <title>Harris角点检测中的公式推导</title>
-      <link href="/2023/03/30/Harris1/"/>
-      <url>/2023/03/30/Harris1/</url>
+      <link href="/posts/de1d57b1.html"/>
+      <url>/posts/de1d57b1.html</url>
       
         <content type="html"><![CDATA[<p>​在Harris角点检测中，我们要算两个窗口的差。首先，两个点之间的差为：<br>$$<br>S &#x3D;f\left(x_{i}, y_{i}\right)-f\left(x_{i}+\Delta x, y_{i}+\Delta y\right)<br>$$<br>​其中f是像素灰度值。为避免误差，取平方，之后在窗口内求和，得：</p><p><img src="https://s2.loli.net/2023/03/30/NVcB7HOImwJlf84.png" alt="image-20230330204656439"></p><p>​刚拿到这个式子，可能从①到②不知道怎么来的。其实这里是应用了泰勒展开，首先我们知道对于一维函数来说，其泰勒展开式子为：<br>$$<br>f(x+h)&#x3D;f(x)+hf’(x)+\frac{h^2}{2!}f’’(x)+o(h^2)<br>$$<br>​一般来说，展开到两阶就行了。但是对于更普适的情况，令 $f(x)$ 是 $\mathbb{R^n}→R$ 的函数，则其泰勒展开式子为：<br>$$<br>f(\mathbf{x}+\mathbf{h})&#x3D;f(\mathbf{x})+\mathbf{h}^T\nabla f(\mathbf{x})+<br>\frac{\mathbf{h}^T}{2!}\nabla^2 f(\mathbf{x})\mathbf{h}+o(||h||^2)<br>$$<br>​可能会有同学觉得这不是h的转置乘以梯度吗，图里公式怎么是梯度的转置乘以h了？其实这两个是相等的，因为他们结果是标量，标量转置等于自己。</p><p>​对于一阶梯度来说，其结果就是对每个自变量求偏导后组成新向量。而对于二阶梯度，其结果叫海森矩阵，其形式为：</p><p><img src="https://s2.loli.net/2023/03/30/blZ3FrAfxyMUcVY.png" alt="image-20230330210859073"></p><p>​之后的步骤都比较明显了，最后我们得到的M长这样：</p><p><img src="https://s2.loli.net/2023/03/30/FR1GBCkO8E7Nqia.png" alt="image-20230330211136239"></p><p>​M是一个半正定矩阵，证明请读者自行练习。</p>]]></content>
       
@@ -32,8 +32,8 @@
     
     <entry>
       <title>Ameshiro的像素RPG小仓库！</title>
-      <link href="/2023/03/29/gamerepo/"/>
-      <url>/2023/03/29/gamerepo/</url>
+      <link href="/posts/b3576427.html"/>
+      <url>/posts/b3576427.html</url>
       
         <content type="html"><![CDATA[<p>​借着搭好博客的契机，悄咪咪宣传一波自己古早时期做的简陋粗糙的像素rpg(</p><h2 id="生命线"><a href="#生命线" class="headerlink" title="生命线"></a>生命线</h2><p>​这是我2020年高三网课那段日子里闲得无聊做的，那时是第一次接触rpgmaker，因为那两年接触像素rpg之后就喜欢上了这种类型风格的游戏，也想自己制作一个出来。这个游戏是我第一部作品，做的很粗糙但也很有成就感，共三个ending，顺便一提游戏文件夹藏着攻略哦~</p><p>​链接:<a href="https://pan.baidu.com/s/1cfOuezb0D3Vwoco4yEP59Q">https://pan.baidu.com/s/1cfOuezb0D3Vwoco4yEP59Q</a> 提取码:t9gp</p><p><img src="https://s2.loli.net/2023/03/29/6J954FftqTYP2Dv.png" alt="image-20230329231914198"></p><p><img src="https://s2.loli.net/2023/03/29/xUuGEXHPtBhNMAq.png" alt="image-20230329232038992"></p><p>​当初做这游戏的时候大晚上想剧情，测试，自己把自己吓得不轻233，不过游戏并没有jump scare，基本是微恐怖~</p><h2 id="橙旅"><a href="#橙旅" class="headerlink" title="橙旅"></a>橙旅</h2><p>​为了给我最喜欢的p主——orangestar庆祝生日，特意做了这部作品，当初本来是做给orangestar粉丝群的大家玩的，角色也是取自各位群友，但这么久过去了也该分享出来啦~</p><p>​链接:<a href="https://pan.baidu.com/s/1GcmoEA6ostK_3qGxPBo5sA">https://pan.baidu.com/s/1GcmoEA6ostK_3qGxPBo5sA</a> 提取码:1gfc</p><p>​这是我第二部作品，结局是五个，同样的文件夹里藏着攻略，流程不长，希望大家喜欢~</p><p><img src="https://s2.loli.net/2023/03/29/j2KQJkENHgvtMT9.png" alt="image-20230329232421446"></p><p>​<img src="https://s2.loli.net/2023/03/29/t3DVghLniaXwIWj.png" alt="image-20230329232449691"></p><p>​这一次的游戏中，我也同样注重细节的处理，也选取了自己最喜欢的BGM，制作游戏的时候想解谜和剧情想的脑阔痛，但我确实这方面灵感和水平不行，还请多多包涵~</p><h2 id="五色推箱子"><a href="#五色推箱子" class="headerlink" title="五色推箱子"></a>五色推箱子</h2><p>​这是我大一的时候，专业有个东西叫特色评测，我就闲来无事拿rpgmaker做了个推箱子，基本没有剧情，只有四关，前两关白给，第四关很难（虽然我是抄的现有的关卡）。</p><p>​链接: <a href="https://pan.baidu.com/s/1GVAF_1Xk5QLnO__CPsBHXg">https://pan.baidu.com/s/1GVAF_1Xk5QLnO__CPsBHXg</a> 提取码</p><p><img src="https://s2.loli.net/2023/03/29/3OkUgKwnqa6erlB.png" alt="image-20230329232712064"></p><p><img src="https://s2.loli.net/2023/03/29/pZVnTbXRvJ27xhI.png" alt="image-20230329232828503"></p><p>​别问为什么五色，因为我太菜了不会五个一样的颜色，因为VX ACE好像不能判断物体坐标位置！！</p><h2 id="蜜柑大陆"><a href="#蜜柑大陆" class="headerlink" title="蜜柑大陆"></a>蜜柑大陆</h2><p>​制作中，敬请期待……（虽然咕咕咕了一年多了）</p><p><img src="https://s2.loli.net/2023/03/29/7cY2RZDMwp6OINu.png" alt="image-20230329232952051"></p><p><img src="https://s2.loli.net/2023/03/29/QuqoBD4G7s9y3pI.png" alt="image-20230329233008011"></p><p>​这部作品我加入了很多大佬的脚本，也加入了打怪的元素，目前剧本未定，地图暂无，只想好了大致区域名称位置以及十二个职业的名称，技能只设定好了三个职业的（真的麻烦这玩意T^T）</p>]]></content>
       
@@ -57,8 +57,8 @@
     
     <entry>
       <title>关于(Ax-b)二范数平方为凸函数的证明</title>
-      <link href="/2023/03/28/Ax-b2/"/>
-      <url>/2023/03/28/Ax-b2/</url>
+      <link href="/posts/b560505.html"/>
+      <url>/posts/b560505.html</url>
       
         <content type="html"><![CDATA[<p>​上文我们求出了<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$<br>​回想高数中，证明凸函数就是看二阶导数（如果存在）大于等于零。映射到矩阵，就是看其海森矩阵是否半正定。</p><p>​海森矩阵也就是对这个结果进一步求导，结果显然是 $\mathbf{2A}^T\mathbf{A}$ , 而如果一个矩阵能够被写成  $\mathbf{A}^T\mathbf{A}$ 或  $\mathbf{A}\mathbf{A}^T$ ,那么他就是半正定的。</p>]]></content>
       
@@ -84,8 +84,8 @@
     
     <entry>
       <title>关于(Ax-b)二范数平方的求导</title>
-      <link href="/2023/03/25/Ax-b/"/>
-      <url>/2023/03/25/Ax-b/</url>
+      <link href="/posts/3e5cc5a1.html"/>
+      <url>/posts/3e5cc5a1.html</url>
       
         <content type="html"><![CDATA[<h2 id="其实是一个基础问题"><a href="#其实是一个基础问题" class="headerlink" title="其实是一个基础问题"></a>其实是一个基础问题</h2><p>​在CV的全景拼接中，遇到个一个向量微分的问题，也就是关于矩阵的最小二乘，虽然第一次做的时候茫然无措，但它实际上就是一个标量对矢量的求导。</p><p>​现在要求这个式子：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}}<br>$$<br>​虽然分子看着吓人，但他其实就是个由  $ \mathrm x$ 向量中的各个元素组合成的多项式的值。对于二范数的平方，其值就等于：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;(\mathbf{Ax}-\mathbf{b})^{T}\hspace{+0.1em} (\mathbf{Ax}-\mathbf{b})<br>$$<br>​运用转置相关知识：<br>$$<br>(\mathbf{Ax}-\mathbf{b})^{T}&#x3D;\mathbf{x}^T\mathbf{A}^T-\mathbf{b}^T<br>$$<br>​之后矩阵乘法：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-\mathbf{x}^T\mathbf{A}^T\mathbf{b}-\mathbf{b}^T\mathbf{Ax}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    注意到，$\mathbf{x}^T\mathbf{A}^T\mathbf{b}&#x3D;\mathbf{b}^T\mathbf{Ax}$ , 因为它们最后的结果是一个数，数的转置就是他自己，所以这个等式成立。这样，等式就变成了：<br>$$<br>||\mathbf{Ax}-\mathbf{b}||^2_2&#x3D;\mathbf{x}^T\mathbf{A}^T\mathbf{Ax}-2\mathbf{x}^T\mathbf{A}^T\mathbf{b}+\mathbf{b}^T\mathbf{b}<br>$$<br>​    这时需要引出两条特别重要的结论：<br>$$<br>① \hspace{1.em}\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}+\mathbf{A}^T )\hspace{0.2em}\mathbf{x}<br>$$</p><p>$$<br>\hspace{1.1em}②\hspace{1em} \dfrac{\mathrm{d}(\mathbf{a}^T\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; \dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{a})}{\mathrm{d}\mathbf{x}}&#x3D; \mathbf{a}<br>$$</p><p>​</p><p>​两个的证明其实不难，因为分子都是标量，本质就是把这个标量用 $\mathbf{x}$ 中的分量表示出来，然后利用标量对矢量求导的定义就行了。我们把这两条规则代入：<br>$$<br>\dfrac{\mathrm{d}(\mathbf{x}^T\mathbf{A}^T\mathbf{Ax})}{\mathrm{d}\mathbf{x}} &#x3D; (\mathbf{A}^T\mathbf{A}+(\mathbf{A}^T\mathbf{A})^T)\hspace{0.2em}\mathbf{x} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x}<br>$$</p><p>$$<br>\dfrac{\mathrm{d}(2\mathbf{x}^T\mathbf{A}^T\mathbf{b})}{\mathrm{d}\mathbf{x}}&#x3D;2 \dfrac{\mathrm{d}(\mathbf{b}^T\mathbf{A}\mathbf{x})}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $\mathbf{b}^T\mathbf{b}$ 与 $\mathbf{x}$ 是无关的，所以求导为零。这样，就得到了：<br>$$<br>\dfrac{\mathrm{d}||\mathbf{Ax}-\mathbf{b}||^2_2}{\mathrm{d}\mathbf{x}} &#x3D; 2\mathbf{A}^T\mathbf{A}\mathbf{x} - 2\mathbf{A}^T\mathbf{b}<br>$$</p><p>​由于 $ ||\mathbf{Ax}-\mathbf{b}||^2_2 $ 是凸函数（证明海森矩阵半正定，一阶导数我们已经求出来了），所以极值点就是极小值点，也就是说令导数为零，最终得到的结果就是我们要找的结果：</p><p>$$<br>\mathbf{x}&#x3D;(\mathbf{A}^T\mathbf{A})^{-1}\mathbf{A}^T\mathbf{b}<br>$$</p><hr><p>​由于两年前学的线代几乎全忘光了，也没有接触过向量函数的微分，所以第一次见到它的时候就有点懵逼。不过感谢一些大佬的帮忙，让我对此有点入门；同时也感谢amekui教我怎么用latex写公式，这篇博客是我第一次接触latex，全篇都是自己手打出来的，感觉好累T^T (hexo竟然不能\newline 害的我又改了一下)</p>]]></content>
       
@@ -111,8 +111,8 @@
     
     <entry>
       <title>终于搭完框架了..</title>
-      <link href="/2023/03/24/finally-get/"/>
-      <url>/2023/03/24/finally-get/</url>
+      <link href="/posts/40443a89.html"/>
+      <url>/posts/40443a89.html</url>
       
         <content type="html"><![CDATA[<p>好累啊，搭了两天，踩了一堆坑，最终也是参阅着各位dalao的文章和博客搭好了，买域名花了35，该考虑怎么装饰了。。。</p>]]></content>
       
@@ -123,6 +123,17 @@
     
   
   
+    
+    
+    <entry>
+      <title></title>
+      <link href="/404.html"/>
+      <url>/404.html</url>
+      
+        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
+      
+    </entry>
+    
     
     
     <entry>
@@ -137,11 +148,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/404.html"/>
-      <url>/404.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
-        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
+        <content type="html"><![CDATA[]]></content>
       
     </entry>
     
@@ -162,17 +173,6 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

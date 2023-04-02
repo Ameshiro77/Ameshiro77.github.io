@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>如何在Matlab中导入toolbox</title>
+      <link href="/posts/a836a3e9.html"/>
+      <url>/posts/a836a3e9.html</url>
+      
+        <content type="html"><![CDATA[<p>​跑老师给的demo的时候遇到了一个问题：无法解析名称 ‘vision.internal.partialSort’</p><p>​显然是缺少对应工具箱导致的，这个工具箱是计算机视觉相关的。但是网上找了好多都是说从外部离线下载，其实在matlab内部就内解决。</p><p><img src="https://s2.loli.net/2023/04/02/xposAMQnzkXwR9r.png" alt="image-20230402195007567"></p><p>​在主页——附加功能 进去 “获取附加功能”，搜索Computer Vision Toolbox然后安装即可，可能要稍微等一会，这个下载需要费点时间。</p><p>​matlab版本：R2022b</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Harris角点检测中的公式推导</title>
       <link href="/posts/de1d57b1.html"/>
       <url>/posts/de1d57b1.html</url>
@@ -20,9 +33,9 @@
       
         <tags>
             
-            <tag> 数学 </tag>
-            
             <tag> CV </tag>
+            
+            <tag> 数学 </tag>
             
         </tags>
       
@@ -159,6 +172,17 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
@@ -173,17 +197,6 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

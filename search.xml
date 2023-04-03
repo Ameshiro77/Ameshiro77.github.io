@@ -11,6 +11,18 @@
         <content type="html"><![CDATA[<p>​跑老师给的demo的时候遇到了一个问题：无法解析名称 ‘vision.internal.partialSort’</p><p>​显然是缺少对应工具箱导致的，这个工具箱是计算机视觉相关的。但是网上找了好多都是说从外部离线下载，其实在matlab内部就内解决。</p><p><img src="https://s2.loli.net/2023/04/02/xposAMQnzkXwR9r.png" alt="image-20230402195007567"></p><p>​在主页——附加功能 进去 “获取附加功能”，搜索Computer Vision Toolbox然后安装即可，可能要稍微等一会，这个下载需要费点时间。</p><p>​matlab版本：R2022b</p>]]></content>
       
       
+      <categories>
+          
+          <category> Matlab </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Matlab </tag>
+            
+        </tags>
       
     </entry>
     
@@ -161,17 +173,6 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -186,6 +187,17 @@
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

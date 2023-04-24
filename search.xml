@@ -8,8 +8,14 @@
       <link href="/posts/a719dae3.html"/>
       <url>/posts/a719dae3.html</url>
       
-        <content type="html"><![CDATA[<p><img src="C:\Users\yubai\Desktop\BZ\os_qq\QQ图片20220410210444.jpg" alt="QQ图片20220410210444"></p>]]></content>
+        <content type="html"><![CDATA[<p>​上文说到我们希望运行出一个游戏界面，而之后我发现是经典读东西读不全的问题，官方文档给出的提示是让我们运行demos.minimal后去运行client里的可执行文件，而非用浏览器打开对应端口（虽然不知道为什么引入了three.js库（做图形学用过这个），但他的示例是用unity做的）。教程还贴心的告诉我们要运行符合系统的可执行文件，我之前之所以运行不了是因为运行了上次在windows下用的.exe。</p><p><img src="C:\Users\yubai\Desktop\BZ\os_qq\QQ图片20220410210444.jpg" alt="QQ图片20220410210444"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> Neural MMO </category>
+          
+      </categories>
       
       
         <tags>
@@ -310,9 +316,9 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -332,9 +338,9 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

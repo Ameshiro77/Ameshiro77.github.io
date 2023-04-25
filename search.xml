@@ -8,7 +8,7 @@
       <link href="/posts/a719dae3.html"/>
       <url>/posts/a719dae3.html</url>
       
-        <content type="html"><![CDATA[<p>​上文说到我们希望运行出一个游戏界面，而之后我发现是经典读东西读不全的问题，官方文档给出的提示是让我们运行demos.minimal后去运行client里的可执行文件，而非用浏览器打开对应端口（虽然不知道为什么引入了three.js库（做图形学用过这个），但他的示例是用unity做的）。教程还贴心的告诉我们要运行符合系统的可执行文件，我之前之所以运行不了是因为运行了上次在windows下用的.exe。</p>]]></content>
+        <content type="html"><![CDATA[<p>​写这篇笔记的时候也在学习强化学习相关知识，移步：<a href="https://www.ameshiro77.cn/posts/34960eab.html">强化学习（一） | 雨白的博客小屋 (ameshiro77.cn)</a></p><p>​上文说到我们希望运行出一个游戏界面，而之后我发现是经典读东西读不全的问题，官方文档给出的提示是让我们运行demos.minimal后去运行client里的可执行文件，而非用浏览器打开对应端口（虽然不知道为什么引入了three.js库（做图形学用过这个），但他的示例是用unity做的）。教程还贴心的告诉我们要运行符合系统的可执行文件，我之前之所以运行不了是因为运行了上次在windows下用的.exe。本文先按照官方文档的TUTORIALS的教程来。</p><p>​顺便解释个名词：<code>scripted_agent</code>：动作由自定义脚本所控制的智能体。</p><h1 id="Minimal-Example"><a href="#Minimal-Example" class="headerlink" title="Minimal Example"></a>Minimal Example</h1><p>​这个示例让我们渲染智能体所在的环境。运行baselines中的minimal后，来到client&#x2F;UnityCilent中,启动右边这个exe。</p><p><img src="https://s2.loli.net/2023/04/25/8Q2iS9LxJPvFyIZ.png" alt="image-20230425123810351"></p><p>​可以看到如下界面：</p><p><img src="https://s2.loli.net/2023/04/25/6BYLCPmA7SOqwaz.png" alt="image-20230425123948469"></p><p>​按tab隐藏下面文字；使用鼠标中键可以调整视角以及进行缩放。按右键可以拖动位置。我们放大视角，选定一个agent，可以对其进行follow：</p><p><img src="https://s2.loli.net/2023/04/25/wMDgTHoQSjNRqea.png" alt="image-20230425124543867"></p><p>​至于下面的commands，目前还没有找到有什么用。另外，这个unity游戏甚至找不到退出键，必须得<strong>alt+F4</strong>才行。。</p><h1 id="Config-Classes"><a href="#Config-Classes" class="headerlink" title="Config Classes"></a>Config Classes</h1><p>​Neural MMO提供了小型、中型、大型预设的基本配置，以及一套游戏系统。通过对预设子类化(大概就是python对子类的定义)来启用游戏系统。比如默认配置是：</p><p><img src="https://s2.loli.net/2023/04/25/ZUVzdIKOx1kcePT.png" alt="image-20230425131538638"></p><p>​而在我们刚才所运行的minimal中，就指定了config:</p><p><img src="https://s2.loli.net/2023/04/25/C86Nj3LMa4VTDY5.png" alt="image-20230425132433003"></p><p>​可以看出用的是中型预设。地图将根据提供的配置在环境实例化时生成，并存放在PATH_MAPS里以供重用。如果主动调整terrain（地形）生成参数，要像上图里设置MAP_FORCE_GENERATION &#x3D; TRUE。（文档写的是FORCE_MAP_GENERATION不知道为啥）</p><p>​当然也可以通过覆盖预设和游戏系统配置参数来自定义地形生成和游戏平衡：</p><p><img src="https://s2.loli.net/2023/04/25/yAGqvSlOdcXgUD3.png" alt="image-20230425133455292"></p><p>​使用config的话，就把自己设定的config当成simulate()的参数就行了。（应该是）</p><p><img src="https://s2.loli.net/2023/04/25/nixbzoEdrDLk4qm.png" alt="image-20230425133554611"></p><p>​源码的simulate()如下：</p><p><img src="https://s2.loli.net/2023/04/25/MOfbEFj1WxCzr7m.png" alt="image-20230425133639963"></p><h1 id="Scripted-API"><a href="#Scripted-API" class="headerlink" title="Scripted API"></a>Scripted API</h1><p>​暂时没看懂这是在干啥。源代码里捏了个LavaAgent，这个Agent喜欢没事就往岩浆里跳，通过nmmo.Agent的子类来实现。这一部分提到了observation和wrapper  class，之后再看看。</p><h1 id="Rewards-amp-Tasks"><a href="#Rewards-amp-Tasks" class="headerlink" title="Rewards &amp; Tasks"></a>Rewards &amp; Tasks</h1><p>​默认情况下，Neural MMO为死亡提供-1的奖励信号，其他行为信号为0.当然我们可以自己覆写奖励。如下：</p><p><img src="https://s2.loli.net/2023/04/25/BSp3ZPeqRgDy1mO.png" alt="image-20230425135312956"></p><p>​这是插入了一个新属性kills。<em>hasattr</em>()函数是用来判断一个对象是否包含对应属性的。这段代码是增加了一个奖励机制：对每一个击败的玩家增加0.1的奖励。比如击杀了两个，就加0.2。当然了，如果只这么加的话，智能体就会总想着杀人而不参与农业了。</p><p>​暂时看到这，看代码的时候还得继续看强化学习的知识。。</p>]]></content>
       
       
       <categories>
@@ -316,9 +316,9 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -327,9 +327,9 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

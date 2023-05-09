@@ -4,11 +4,42 @@
   
     
     <entry>
+      <title>Neural MMO 学习笔记(五)</title>
+      <link href="/posts/d4086348.html"/>
+      <url>/posts/d4086348.html</url>
+      
+        <content type="html"><![CDATA[<p>​之前我们是运行了NMMO的示例，并且看到了示例的结果。除去代码层面，还是得要结合一下文档和强化学习的相关学习的。学习NMMO的主要目标，并不是跑一个游戏模型，而是说——如何利用这个框架，实现在<strong>大型</strong>环境下的<strong>高效</strong>学习。</p><p>​官方文档写到：</p><p><img src="https://s2.loli.net/2023/05/09/PSrYtQvomZzRqfH.png" alt="image-20230509132326377"></p><p>​Neural MMO 提供标准环境配置以及脚本模型、使用 CleanRL 预训练的基线以及 WanDB 托管的训练&#x2F;评估日志。什么是CleanRL?它是是一个深度强化学习库，它提供了高质量的单文件实现，具有研究用的功能。github如下： <a href="https://github.com/vwxyzjn/cleanrl">vwxyzjn&#x2F;cleanrl: High-quality single file implementation of Deep Reinforcement Learning algorithms with research-friendly features (PPO, DQN, C51, DDPG, TD3, SAC, PPG) (github.com)</a>。不过CleanRL只包括在线强化学习的实现——什么是在线强化学习？</p><p><img src="https://s2.loli.net/2023/05/09/KbZY5jTpik73sXQ.png" alt="image-20230509133310393"></p><p>​注意这里的用词：<strong>online而不是on-policy</strong>。on&#x2F;off policy （同&#x2F;异策略）强调采样和更新的策略是否相同：</p><p><img src="https://s2.loli.net/2023/05/09/w9KZMWyN58gd3iB.png" alt="image-20230509133920041"></p><p>​说白了就是：看更新Q值用的方法是沿用既定的策略还是用新策略。</p><p>​而on&#x2F;off line是指，比如说我在玩超级马里奥，在线学习是我边玩边学，第一关没过我就学到了很多；而离线学习是我死了或者过了第一关后，我开始回顾并且更新策略。它强调更新权重的时机。</p><p>​<strong>（所以我强烈推荐写强化学习博客的同学在写在线学习的时候写清楚是on-policy还是online）</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Neural MMO </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Newral MMO </tag>
+            
+            <tag> 强化学习 </tag>
+            
+            <tag> 多智能体 </tag>
+            
+            <tag> 在线学习 离线学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>强化学习(二)</title>
       <link href="/posts/aa0fa061.html"/>
       <url>/posts/aa0fa061.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>​上文中我们对强化学习做了一些概述，但都只是对于单智能体而言。本文主要介绍多智能体。By the way，多智能体强化学习的学习需要有博弈论的相关知识。从决策者的角度，多智能体系统分为单决策者和多决策者。</p><h1 id="单决策者"><a href="#单决策者" class="headerlink" title="单决策者"></a>单决策者</h1><p>​我们考虑环境里有多个行动者，但只有一个决策者。此时，决策者告诉其他智能体该做什么。我们假设“智能体会简单地执行被告知的事情”——这个假设称作仁者假设（benevolent agent assumption）。但是即便在仁者假设下，多个行动者的行动也要考虑<strong>同步</strong>关系。对行动者A和B，他们可能会同时行动，也可能同一时刻某动作必须互斥，也可能必须满足某种先后关系（序贯动作）。</p><p>​当然，如果每个主体的信息都能集中起来，然后给总体规划进行执行，那么一个多体问题也可以看作一个单智能体问题。当这种集中是无法实现时，我们就面临分散规划（decentralized planning）问题。</p><h1 id="多决策者"><a href="#多决策者" class="headerlink" title="多决策者"></a>多决策者</h1><pre><code>     不同于单决策者情况——试想我们环境中其他行动者也是决策者，它们中每一个都有着自己的偏好，都会自己规划、自己选择。我们称之为对应体（counterpart）。此时可分为两个情况：</code></pre><p>· 虽然有多个决策者，但是共同目标是相同的。此时的问题主要是协调问题（coordination problem）：每个人都要朝着一个方向努力，不能彼此破坏规划。</p><p>· 每个决策者都有自己的偏好，即使这些偏好截然相反。</p><p>​显然，这就意味着我们要进入博弈论的领域了。博弈论是多智能体系统决策的理论基础。博弈论可以通过两种方式用于人工智能：</p><p>· 智能体设计。智能体用博弈论分析可能的决策，假设其他智能体采取理性行动时计算每个决策的期望效用。</p><p>· 机制设计。 我们可以定义环境规则，即智能体必须参与的博弈，使得每个智能体都采用自身效用最好的方案时，最大化集体利益。</p><p>​博弈论为我们提供了一系列不同的模型，其中每个模型都有自己的一套基本假设。其中最重要的区别在于我们是否应该将其视为合作博弈。博弈分两种：</p><p>· 合作博弈。智能体之间存在一个具有约束力的协约，保证智能体之间稳健合作。</p><p>· 非合作博弈。 非合作并不是说只有竞争没有合作。它只是说，没有中心协约来约束所有智能体合作，智能体可以自行决定合作，只要最大化自己利益就行。</p><p>​</p>]]></content>
       
       
       <categories>
@@ -321,17 +352,6 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/404.html"/>
       <url>/404.html</url>
@@ -354,9 +374,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -368,6 +388,17 @@
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>openCV踩坑汇总</title>
+      <link href="/posts/4e9580a4.html"/>
+      <url>/posts/4e9580a4.html</url>
+      
+        <content type="html"><![CDATA[<p>​opencv总是在许多地方设定一些奇奇怪怪的反常识的坑，此贴以供记录。本帖主要记录python的opencv；同时对于有些版本引起的问题可能无法涉及。</p><h1 id="图像的shape：并不是宽比高"><a href="#图像的shape：并不是宽比高" class="headerlink" title="图像的shape：并不是宽比高"></a>图像的shape：并不是宽比高</h1><p>​假设我们现在有一张1920*1080的图片，我们用img &#x3D; cv2.imread(“1.png”) 去读取，然后输出image.shape，会得到：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1080, 1920, 3)</span><br></pre></td></tr></table></figure><p>​<strong>可见img.shape输出的是：高、宽、通道数。但尤其注意，resize的时候，cv2.resize()输入的是(宽，高)而不是(高，宽)！！</strong></p><p>​<strong>另外，openCV的通道排列是B、G、R。</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> openCV </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机视觉 </tag>
+            
+            <tag> openCV </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Neural MMO 学习笔记(五)</title>
       <link href="/posts/d4086348.html"/>
       <url>/posts/d4086348.html</url>
@@ -374,17 +401,6 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -396,9 +412,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -410,6 +426,17 @@
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

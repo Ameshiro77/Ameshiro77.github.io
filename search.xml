@@ -8,7 +8,7 @@
       <link href="/posts/4e9580a4.html"/>
       <url>/posts/4e9580a4.html</url>
       
-        <content type="html"><![CDATA[<p>​opencv总是在许多地方设定一些奇奇怪怪的反常识的坑，此贴以供记录。本帖主要记录python的opencv；同时对于有些版本引起的问题可能无法涉及。</p><h1 id="图像的shape：并不是宽比高"><a href="#图像的shape：并不是宽比高" class="headerlink" title="图像的shape：并不是宽比高"></a>图像的shape：并不是宽比高</h1><p>​假设我们现在有一张1920*1080的图片，我们用img &#x3D; cv2.imread(“1.png”) 去读取，然后输出image.shape，会得到：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1080, 1920, 3)</span><br></pre></td></tr></table></figure><p>​<strong>可见img.shape输出的是：高、宽、通道数。但尤其注意，resize的时候，cv2.resize()输入的是(宽，高)而不是(高，宽)！！</strong></p><p>​<strong>另外，openCV的通道排列是B、G、R。</strong></p>]]></content>
+        <content type="html"><![CDATA[<p>​opencv总是在许多地方设定一些奇奇怪怪的反常识的坑，此贴以供记录。本帖主要记录python的opencv；同时对于有些版本引起的问题可能无法涉及。</p><h1 id="图像的shape：并不是宽比高"><a href="#图像的shape：并不是宽比高" class="headerlink" title="图像的shape：并不是宽比高"></a>图像的shape：并不是宽比高</h1><p>​假设我们现在有一张1920*1080的图片，我们用img &#x3D; cv2.imread(“1.png”) 去读取，然后输出image.shape，会得到：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1080, 1920, 3)</span><br></pre></td></tr></table></figure><p>​<strong>可见img.shape输出的是：高、宽、通道数。但尤其注意，resize的时候，cv2.resize()输入的是(宽，高)而不是(高，宽)！！</strong></p><p>​<strong>另外，openCV的通道排列是B、G、R。</strong></p><h1 id="普通棋盘版标定规则"><a href="#普通棋盘版标定规则" class="headerlink" title="普通棋盘版标定规则"></a>普通棋盘版标定规则</h1><p>​（应该是这样，老师讲过但是有点记不得了）首先，请确保您的标定板的行列角点数是一奇一偶。在openCV的实现中，角点的排列顺序时：<strong>以奇数角点的方向为x轴，以偶数角点的方向为y轴；以黑色方块角落为原点</strong>。可能听起来比较绕，看下图：</p><p><img src="https://s2.loli.net/2023/05/12/v5MuA62tkdgZOpB.png"></p><p>​这是openCV画出来的角点，我们每行是9个角点，每列是10个角点，所以向右是x轴，向下是y轴。然后，我们从原点角点开始，向右且逐行地扫描角点。</p><p>​<strong>为什么我们要关注这个？因为要建立世界坐标系下角点和像素坐标系下角点的一一对应关系，这样你世界坐标系的点也这么排列，就能建立起来对应关系了。否则标定结果是完全错误的。</strong></p><p>​还是举个例子，比如这个图中，我们棋盘格世界坐标系下角点间距13mm，那么输出世界坐标系中的角点坐标（部分）：</p><p><img src="https://s2.loli.net/2023/05/12/5RxUXyAFEVqljMg.png" alt="image-20230512001350674"></p><p>​接着，输出像素坐标（<strong>为什么不是整数？或许是因为插值，还请高人指点</strong>）：</p><p><img src="https://s2.loli.net/2023/05/12/bCNpFr3vsIiLnR6.png" alt="image-20230512002858656"></p><p>​(这里我只截图了部分，但实际输出就是九个一换行，是一一对应的)</p><p>​最后，来一张我老师的标定板吧，这个是标准的标定板格式。</p><p><img src="https://s2.loli.net/2023/05/12/485KaYW3ulXrMUo.png" alt="image-20230512003042241"></p>]]></content>
       
       
       <categories>
@@ -379,44 +379,22 @@
     
     
     <entry>
-      <title></title>
-      <link href="/404.html"/>
-      <url>/404.html</url>
-      
-        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/404.html"/>
+      <url>/404.html</url>
+      
+        <content type="html"><![CDATA[<p>title: 404<br>date: 2019-08-5 16:41:10<br>type: “404”<br>layout: “404”<br>description: “Oops～，我崩溃了！找不到你想要的页面 :(“</p>]]></content>
       
     </entry>
     
@@ -434,9 +412,31 @@
     
     
     <entry>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

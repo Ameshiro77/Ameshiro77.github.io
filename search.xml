@@ -4,11 +4,65 @@
   
     
     <entry>
+      <title>Vue+Node.js踩坑汇总</title>
+      <link href="/posts/6ec3ee5e.html"/>
+      <url>/posts/6ec3ee5e.html</url>
+      
+        <content type="html"><![CDATA[<p>​开发前端后端太折磨了。本博客只是个人用来记录用Vue踩的坑，并非是教程向。</p><h1 id="由于奇异字符引起的’MODULE-NOT-FOUND’"><a href="#由于奇异字符引起的’MODULE-NOT-FOUND’" class="headerlink" title="由于奇异字符引起的’MODULE_NOT_FOUND’"></a>由于奇异字符引起的’MODULE_NOT_FOUND’</h1><p>​我们知道，学计算机最忌讳的事情之一就是用中文命名文件夹。但是，如果你的文件夹包括了像“&amp;”这样的奇葩符号，也会因为这个掉坑里（别的符号我不知道，这个坑我是踩麻了）。</p><p>​报错表现为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node:internal/modules/cjs/loader:959</span><br><span class="line">  throw err;</span><br></pre></td></tr></table></figure><p>​然后会说你  ‘MODULE_NOT_FOUND’。如果您不想修改文件名，您可以采用以下解决方法，当然我不保证正确性，反正我用起来是好的：</p><p>​进入.&#x2F;node_modules文件夹，再进入.&#x2F;bin，然后找到vue-cli-service.cmd，我们把里面的原本的IF-ELSE代码修改如下：</p><p>​原先是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IF EXIST &quot;%dp0%\node.exe&quot; (</span><br><span class="line"> SET &quot;_prog=%dp0%\node.exe&quot;</span><br><span class="line">) ELSE (</span><br><span class="line"> SET &quot;_prog=node&quot;</span><br><span class="line"> SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​修改成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@IF EXIST &quot;%~dp0\node.exe&quot; (</span><br><span class="line"> &quot;%~dp0\node.exe&quot;  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">) ELSE (</span><br><span class="line"> @SETLOCAL</span><br><span class="line"> @SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line"> node  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​不保证正确性，反正我用的没问题。</p><h1 id="Node版本问题：sass无法npm-install"><a href="#Node版本问题：sass无法npm-install" class="headerlink" title="Node版本问题：sass无法npm install"></a>Node版本问题：sass无法npm install</h1><p>​当你使用npm install的时候，有时候或许会发生如图的错误：</p><p><img src="https://s2.loli.net/2023/05/16/PMr96iTbJfyaR2Z.png" alt="image-20230516010559985"></p><p>​我们知道npm install是根据package.json里的东西安装的，这种错误说明package.json里对应包的版本和你当前node版本不符合。就比如我这个，node是16.0+版本，查询得知要求的sass版本要6.0+才行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Node.js </tag>
+            
+            <tag> Vue </tag>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>机器学习基础（一）：基本概念</title>
+      <link href="/posts/7a8aebe7.html"/>
+      <url>/posts/7a8aebe7.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​本博客主要用来自己学习以及复习考试，由于是课程笔记，所以可能很多东西都是截取的课程PPT。如果您对知识内容有什么看法，欢迎在下方留评论，谢谢~</p><h1 id="什么是机器学习"><a href="#什么是机器学习" class="headerlink" title="什么是机器学习"></a>什么是机器学习</h1><p>​相信对于这个问题，大家在各个博客都已经看烂了。机器学习说白了就是统计学分支出来的，就是基于数据训练出个模型用于新数据。当然，对机器学习没有严格的定义，比如：</p><p><em>“a set of methods that can</em> <em><strong>automatically detect*  *patterns</strong></em> <em>in data, and then use the uncovered</em>  <em>patterns to</em> <em><strong>predict future data</strong>, or to perform other</em>  <em>kinds of decision making</em> <em><strong>under uncertainty</strong>.”</em></p><p>​反正定义多种多样。简而言之。机器学习是<strong>数据驱动</strong>的，目标<strong>是让机器像人类一样学习、识别、发现、判断</strong>。当然，也可以说：机器学习 &#x3D; training+testing；抑或说，就是寻找一个模型。机器学习的框架如下：</p><p><img src="https://s2.loli.net/2023/05/14/n8MdjlEXNYfUxT2.png" alt="image-20230514234852908"></p><pre><code>     我们以图像识别为例。第一步：我们有一大堆模型，但是我们不知道选哪个。第二步：我们用不同模型训练数据，评价不同模型好坏。 第三步：我们选择表现最好的模型，然后使用它。当然，这只是一个非常、非常普通且宽泛的framework。</code></pre><p>​之后关注一下机器学习的分类概览：</p><p><img src="https://s2.loli.net/2023/05/14/v57QYjx6kurJKFh.png" alt="image-20230514235209938"></p><p>​这个图还是有必要记住的。机器学习主要应用场景有：监督学习、非监督学习、半监督学习、强化学习、迁移学习等。图中，蓝色的是<strong>应用场景</strong>，红色的是<strong>任务</strong>，绿色的是<strong>方法</strong>。监督学习和非监督学习的差别就是：是否拥有带有标签的数据。而半监督基于聚类假设，主要应用场景是：我们只有少部分有标签的数据，打标签很费劲，但我们需要大量有标签的数据。</p><p>​迁移学习有点预训练的意思，就比如你训练一个神经网络，模型的权重可以拿现有权重先初始用着——当然，这需要你用别人的权重不会让你的任务乱套。至于强化学习，只能说天坑，慎入。</p><p>​总之，我们目前为止重点要关注的是监督学习。监督学习主要包括两大任务：<strong>回归</strong>和<strong>分类</strong>。我们之后基本都是围绕这俩东西做文章。回归是对连续值的预测，而分类主要针对于离散值。我们注意到有个structured learning，这主要是针对于语音识别、机器翻译这种任务说的。</p><h1 id="基本术语"><a href="#基本术语" class="headerlink" title="基本术语"></a>基本术语</h1><p>​机器学习中我们会遇到样本、特征、训练集、测试集的等等这种术语。认识这种术语是很有必要的。</p><h1 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h1><p>​枯燥的文字太烦人了，还是来点数学能够激动人心。之前我们说过机器学习的framework里需要选出最好的模型，</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>openCV踩坑汇总</title>
       <link href="/posts/4e9580a4.html"/>
       <url>/posts/4e9580a4.html</url>
       
-        <content type="html"><![CDATA[<p>​opencv总是在许多地方设定一些奇奇怪怪的反常识的坑，此贴以供记录。本帖主要记录python的opencv；同时对于有些版本引起的问题可能无法涉及。</p><h1 id="图像的shape：并不是宽比高"><a href="#图像的shape：并不是宽比高" class="headerlink" title="图像的shape：并不是宽比高"></a>图像的shape：并不是宽比高</h1><p>​假设我们现在有一张1920*1080的图片，我们用img &#x3D; cv2.imread(“1.png”) 去读取，然后输出image.shape，会得到：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1080, 1920, 3)</span><br></pre></td></tr></table></figure><p>​<strong>可见img.shape输出的是：高、宽、通道数。但尤其注意，resize的时候，cv2.resize()输入的是(宽，高)而不是(高，宽)！！</strong></p><p>​<strong>另外，openCV的通道排列是B、G、R。</strong></p><h1 id="普通棋盘版标定规则"><a href="#普通棋盘版标定规则" class="headerlink" title="普通棋盘版标定规则"></a>普通棋盘版标定规则</h1><p>​（应该是这样，老师讲过但是有点记不得了）首先，请确保您的标定板的行列角点数是一奇一偶。在openCV的实现中，角点的排列顺序时：<strong>以奇数角点的方向为x轴，以偶数角点的方向为y轴；以黑色方块角落为原点</strong>。可能听起来比较绕，看下图：</p><p><img src="https://s2.loli.net/2023/05/12/v5MuA62tkdgZOpB.png"></p><p>​这是openCV画出来的角点，我们每行是9个角点，每列是10个角点，所以向右是x轴，向下是y轴。然后，我们从原点角点开始，向右且逐行地扫描角点。</p><p>​<strong>为什么我们要关注这个？因为要建立世界坐标系下角点和像素坐标系下角点的一一对应关系，这样你世界坐标系的点也这么排列，就能建立起来对应关系了。否则标定结果是完全错误的。</strong></p><p>​还是举个例子，比如这个图中，我们棋盘格世界坐标系下角点间距13mm，那么输出世界坐标系中的角点坐标（部分）：</p><p><img src="https://s2.loli.net/2023/05/12/5RxUXyAFEVqljMg.png" alt="image-20230512001350674"></p><p>​接着，输出像素坐标（<strong>为什么不是整数？或许是因为插值，还请高人指点</strong>）：</p><p><img src="https://s2.loli.net/2023/05/12/bCNpFr3vsIiLnR6.png" alt="image-20230512002858656"></p><p>​(这里我只截图了部分，但实际输出就是九个一换行，是一一对应的)</p><p>​最后，来一张我老师的标定板吧，这个是标准的标定板格式。</p><p><img src="https://s2.loli.net/2023/05/12/485KaYW3ulXrMUo.png" alt="image-20230512003042241"></p>]]></content>
+        <content type="html"><![CDATA[<p>​opencv总是在许多地方设定一些奇奇怪怪的反常识的坑，此贴以供记录。本帖主要记录python的opencv；同时对于有些版本引起的问题可能无法涉及。</p><h1 id="图像的shape：并不是宽比高"><a href="#图像的shape：并不是宽比高" class="headerlink" title="图像的shape：并不是宽比高"></a>图像的shape：并不是宽比高</h1><p>​假设我们现在有一张1920*1080的图片，我们用img &#x3D; cv2.imread(“1.png”) 去读取，然后输出image.shape，会得到：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(1080, 1920, 3)</span><br></pre></td></tr></table></figure><p>​<strong>可见img.shape输出的是：高、宽、通道数。但尤其注意，resize的时候，cv2.resize()输入的是(宽，高)而不是(高，宽)！！</strong></p><p>​<strong>另外，openCV的通道排列是B、G、R。</strong></p><h1 id="普通棋盘版标定规则"><a href="#普通棋盘版标定规则" class="headerlink" title="普通棋盘版标定规则"></a>普通棋盘版标定规则</h1><p>​（应该是这样，老师讲过但是有点记不得了）首先，请确保您的标定板的行列角点数是一奇一偶。在openCV的实现中，角点的排列顺序时：<strong>以奇数角点的方向为x轴，以偶数角点的方向为y轴；以黑色方块角落为原点</strong>。可能听起来比较绕，看下图：</p><p><img src="https://s2.loli.net/2023/05/12/v5MuA62tkdgZOpB.png"></p><p>​这是openCV画出来的角点，我们每行是9个角点，每列是10个角点，所以向右是x轴，向下是y轴。然后，我们从原点角点开始，向右且逐行地扫描角点。</p><p>​<strong>为什么我们要关注这个？因为要建立世界坐标系下角点和像素坐标系下角点的一一对应关系，这样你世界坐标系的点也这么排列，就能建立起来对应关系了。否则标定结果是完全错误的。</strong></p><p>​还是举个例子，比如这个图中，我们棋盘格世界坐标系下角点间距13mm，那么输出世界坐标系中的角点坐标（部分）：</p><p><img src="https://s2.loli.net/2023/05/12/5RxUXyAFEVqljMg.png" alt="image-20230512001350674"></p><p>​接着，输出像素坐标（<strong>为什么不是整数？或许是因为插值，还请高人指点</strong>）：</p><p><img src="https://s2.loli.net/2023/05/12/bCNpFr3vsIiLnR6.png" alt="image-20230512002858656"></p><p>​(这里我只截图了部分，但实际输出就是九个一换行，是一一对应的)</p><p>​最后，来一张我老师的标定板吧，这个是标准的标定板格式。</p><p><img src="https://s2.loli.net/2023/05/12/485KaYW3ulXrMUo.png" alt="image-20230512003042241"></p><h1 id="鱼眼相机标定"><a href="#鱼眼相机标定" class="headerlink" title="鱼眼相机标定"></a>鱼眼相机标定</h1><p>​在python里用cv2.fisheye.calibrate的时候是没有提示的，但是其实是有这个模块的。如果按照普通标定板，参考官网教程的话，它的objectpoints是(N,3)的：</p><p><img src="https://s2.loli.net/2023/05/12/vwIBSyA2MEiF94n.png" alt="image-20230512105333290"></p><p>​但是如果你直接用这个points作鱼眼相机标定函数的参数的话，会报错：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opencv-python\opencv-python\opencv\modules\calib3d\src\fisheye.cpp:753: error: (-215:Assertion failed) objectPoints.type() == CV_32FC3 || objectPoints.type() == CV_64FC3 in function &#x27;cv::fisheye::calibrate&#x27;</span><br></pre></td></tr></table></figure><p>​他会说你的数据类型不是CV_32FC3，这个意思是32float，3通道。而事实上，鱼眼相机标定要求的世界坐标系点是（N,1,3），<strong>我们把objp的格式改成(N,1,3)就能运行了 （我也很懵b）</strong>:</p><p><img src="https://s2.loli.net/2023/05/12/DysHbiJAhPtM9Ru.png" alt="image-20230512110216903"></p><p>​比如这是修改前的，按照官方教程来的 角点的世界坐标和像素坐标下的shape：</p><p><img src="https://s2.loli.net/2023/05/12/QpIXCscMAhP7Bu8.png" alt="image-20230512110443871"></p><p>​修改后上面就是90,1,3了。没想到官方文档还会坑人啊，真麻了。</p>]]></content>
       
       
       <categories>
@@ -379,17 +433,6 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title></title>
       <link href="/404.html"/>
       <url>/404.html</url>
@@ -401,9 +444,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -415,6 +458,17 @@
       <title>时间线</title>
       <link href="/archives/index.html"/>
       <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

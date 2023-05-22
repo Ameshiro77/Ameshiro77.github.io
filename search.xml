@@ -8,7 +8,7 @@
       <link href="/posts/6ec3ee5e.html"/>
       <url>/posts/6ec3ee5e.html</url>
       
-        <content type="html"><![CDATA[<p>​<strong>开发前端后端太折磨了。本博客只是个人用来记录用Vue踩的坑，并非是教程向。</strong></p><h1 id="由于奇异字符引起的’MODULE-NOT-FOUND’"><a href="#由于奇异字符引起的’MODULE-NOT-FOUND’" class="headerlink" title="由于奇异字符引起的’MODULE_NOT_FOUND’"></a>由于奇异字符引起的’MODULE_NOT_FOUND’</h1><p>​我们知道，学计算机最忌讳的事情之一就是用中文命名文件夹。但是，如果你的文件夹包括了像“&amp;”这样的奇葩符号，也会因为这个掉坑里（别的符号我不知道，这个坑我是踩麻了）。</p><p>​报错表现为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node:internal/modules/cjs/loader:959</span><br><span class="line">  throw err;</span><br></pre></td></tr></table></figure><p>​然后会说你  ‘MODULE_NOT_FOUND’。如果您不想修改文件名(<strong>前提是您文件名含的不是中文，而是一些奇异的符号，鬼知道中文还能弄出来什么东西</strong>,<strong>我试了下，用中文的时候此法无用</strong>)，您可以采用以下解决方法，当然我不保证正确性，反正我用起来是好的：</p><p>​进入.&#x2F;node_modules文件夹，再进入.&#x2F;bin，然后找到vue-cli-service.cmd，我们把里面的原本的IF-ELSE代码修改如下：</p><p>​原先是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IF EXIST &quot;%dp0%\node.exe&quot; (</span><br><span class="line"> SET &quot;_prog=%dp0%\node.exe&quot;</span><br><span class="line">) ELSE (</span><br><span class="line"> SET &quot;_prog=node&quot;</span><br><span class="line"> SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​修改成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@IF EXIST &quot;%~dp0\node.exe&quot; (</span><br><span class="line"> &quot;%~dp0\node.exe&quot;  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">) ELSE (</span><br><span class="line"> @SETLOCAL</span><br><span class="line"> @SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line"> node  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​不保证正确性，反正我用的没问题。</p><h1 id="Node版本问题：sass无法npm-install"><a href="#Node版本问题：sass无法npm-install" class="headerlink" title="Node版本问题：sass无法npm install"></a>Node版本问题：sass无法npm install</h1><p>​当你使用npm install的时候，有时候或许会发生如图的错误：</p><p><img src="https://s2.loli.net/2023/05/16/PMr96iTbJfyaR2Z.png" alt="image-20230516010559985"></p><p>​我们知道npm install是根据package.json里的东西安装的，这种错误说明package.json里对应包的版本和你当前node版本不符合。就比如我这个，node是16.0+版本，查询得知要求的sass版本要6.0+才行。</p><p>​<strong>特别注意，你改了sass版本后，还要给对应sass_loader的版本，不然照样报错。</strong></p>]]></content>
+        <content type="html"><![CDATA[<p>​<strong>开发前端后端太折磨了。本博客只是个人用来记录用Vue踩的坑，并非是教程向。</strong></p><h1 id="由于奇异字符引起的’MODULE-NOT-FOUND’"><a href="#由于奇异字符引起的’MODULE-NOT-FOUND’" class="headerlink" title="由于奇异字符引起的’MODULE_NOT_FOUND’"></a>由于奇异字符引起的’MODULE_NOT_FOUND’</h1><p>​我们知道，学计算机最忌讳的事情之一就是用中文命名文件夹。但是，如果你的文件夹包括了像“&amp;”这样的奇葩符号，也会因为这个掉坑里（别的符号我不知道，这个坑我是踩麻了）。</p><p>​报错表现为：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node:internal/modules/cjs/loader:959</span><br><span class="line">  throw err;</span><br></pre></td></tr></table></figure><p>​然后会说你  ‘MODULE_NOT_FOUND’。如果您不想修改文件名(<strong>前提是您文件名含的不是中文，而是一些奇异的符号，鬼知道中文还能弄出来什么东西</strong>,<strong>我试了下，用中文的时候此法无用</strong>)，您可以采用以下解决方法，当然我不保证正确性，反正我用起来是好的：</p><p>​进入.&#x2F;node_modules文件夹，再进入.&#x2F;bin，然后找到vue-cli-service.cmd，我们把里面的原本的IF-ELSE代码修改如下：</p><p>​原先是：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">IF EXIST &quot;%dp0%\node.exe&quot; (</span><br><span class="line"> SET &quot;_prog=%dp0%\node.exe&quot;</span><br><span class="line">) ELSE (</span><br><span class="line"> SET &quot;_prog=node&quot;</span><br><span class="line"> SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​修改成：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@IF EXIST &quot;%~dp0\node.exe&quot; (</span><br><span class="line"> &quot;%~dp0\node.exe&quot;  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">) ELSE (</span><br><span class="line"> @SETLOCAL</span><br><span class="line"> @SET PATHEXT=%PATHEXT:;.JS;=;%</span><br><span class="line"> node  &quot;%~dp0\..\@vue\cli-service\bin\vue-cli-service.js&quot; %*</span><br><span class="line">)</span><br></pre></td></tr></table></figure><p>​不保证正确性，反正我用的没问题。</p><h1 id="Node版本问题：sass无法npm-install"><a href="#Node版本问题：sass无法npm-install" class="headerlink" title="Node版本问题：sass无法npm install"></a>Node版本问题：sass无法npm install</h1><p>​当你使用npm install的时候，有时候或许会发生如图的错误：</p><p><img src="https://s2.loli.net/2023/05/16/PMr96iTbJfyaR2Z.png" alt="image-20230516010559985"></p><p>​我们知道npm install是根据package.json里的东西安装的，这种错误说明package.json里对应包的版本和你当前node版本不符合。就比如我这个，node是16.0+版本，查询得知要求的sass版本要6.0+才行。</p><p>​<strong>特别注意，你改了sass版本后，还要给对应sass_loader的版本，不然照样报错。</strong></p><h1 id="el-upload的action接口"><a href="#el-upload的action接口" class="headerlink" title="el-upload的action接口"></a>el-upload的action接口</h1><p>​由于本人是vue+flask，flask开在端口8080，vue开在端口8081，所以前端掉后端接口掉的是8080。上传东西时，我们可以选用el-upload，在action中指定端口：</p><p><img src="https://s2.loli.net/2023/05/23/vUeaTnEk4iF8xho.png" alt="image-20230523000145039"></p><p>​这里的action的端口最好详细给出，如果不写清楚端口号的话，以我这个为例，他会调8081的api，所以会发生错误。</p><h1 id="v-for的ref，以及”调子组件函数与渲染页面”的顺序问题"><a href="#v-for的ref，以及”调子组件函数与渲染页面”的顺序问题" class="headerlink" title="v-for的ref，以及”调子组件函数与渲染页面”的顺序问题"></a>v-for的ref，以及”调子组件函数与渲染页面”的顺序问题</h1><p>​现在是这么一个场景：我们要用v-for渲染一组图片，代码如下：</p><p><img src="https://s2.loli.net/2023/05/23/9IjEROD5fpzbo18.png" alt="image-20230523000622225"></p><p>​responseImage是我们点击搜索按钮后，返回的图像数据。</p><h2 id="问题1：ref问题"><a href="#问题1：ref问题" class="headerlink" title="问题1：ref问题"></a>问题1：ref问题</h2><p>​对于v-for的ref，我们不能直接用this-&gt;$refs.imageCard.f() (f是子组件里的函数) 来调用子组件的函数f，因为这里的refs.imageCard是一个数组，所以我们要用索引方式调用。也就是refs.imageCard[0].f().</p><p>(别问我为啥不写$，会和前面的符号合并懒得处理了。。)</p><h2 id="问题2：渲染问题"><a href="#问题2：渲染问题" class="headerlink" title="问题2：渲染问题"></a>问题2：渲染问题</h2><p>​我们父组件里有这么一个函数，也就是上传后的函数：</p><p><img src="https://s2.loli.net/2023/05/23/jOHcC4Iwy3uVlWE.png" alt="image-20230523001040027"></p><p>​上传成功后，responseImage会更新。但是，如果我们在这里去打印出v-for里的item的话，此时得到的是更新前的response。具体渲染机制我不太了解，但如果我们要在父组件的函数里，在这时去调用子组件的函数的话，子组件此时的数据（我这个例子里是imageUrl）还是未更新过的，所以做操作的话会慢一步。</p><p>​解决办法：在子组件里加个watch函数，监视imageUrl。</p>]]></content>
       
       
       <categories>
@@ -444,6 +444,17 @@
     
     
     <entry>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -458,17 +469,6 @@
       <title>时间线</title>
       <link href="/archives/index.html"/>
       <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

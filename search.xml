@@ -120,7 +120,7 @@
       <link href="/posts/aa0fa061.html"/>
       <url>/posts/aa0fa061.html</url>
       
-        <content type="html"><![CDATA[<p>​从本文开始，均是针对哔哩哔哩网课的笔记记录。本文参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=05dba3ddf58ccccdd5db01aec71596cc">【强化学习的数学原理】课程：从零开始到透彻理解（完结）_哔哩哔哩_bilibili</a></p><p>​本文是对基本概念的介绍。</p><h1 id="笔记背景范例"><a href="#笔记背景范例" class="headerlink" title="笔记背景范例"></a>笔记背景范例</h1><p>​本课程的背景例子如图：</p><img src="https://s2.loli.net/2023/07/11/KDlXiugmkqw4YMj.png" alt="image-20230711105145024" style="zoom:50%;" /><p>​这是一个网格世界，我们的机器人要从给定的起点出发，寻找一个合适的路径到达我们的目的地(也就是我们的task)。机器人只能向相邻四个方格移动，且整个网格世界存在边界。我们的机器人要尽可能避免进入forbidden，且不能超越边界。    以此背景，我们介绍下面概念。</p><h1 id="State：状态"><a href="#State：状态" class="headerlink" title="State：状态"></a>State：状态</h1><p>​<strong>state</strong>是指智能体相对于环境所处的状态。在我们的例子中，不同的方格代表了不同的状态，是一个包含x，y二维坐标信息的向量。如图所示：</p><img src="https://s2.loli.net/2023/07/11/pVcWwRKzOIhYvyZ.png" alt="image-20230711105726622" style="zoom:50%;" /><p>​state space:即状态空间，也就是所有状态的集合：$\mathcal{S}&#x3D;\left {s_i \right. } _{i&#x3D;1}^{9}$.   (打latex真累。。)</p><h1 id="Action：行动"><a href="#Action：行动" class="headerlink" title="Action：行动"></a>Action：行动</h1><p>​<strong>action</strong>是指对于每一个状态，智能体拥有的一系列可以采取的行动。对我们的例子来说，共有如下五个状态：</p><img src="https://s2.loli.net/2023/07/11/D21RaXl9OKnPjZm.png" alt="image-20230711110637375" style="zoom:50%;" /><p>​a1~a5依次是向上、向右、向下、向左已经保持不动。</p><p>​<strong>Action space of a state</strong>： 某个状态的动作空间。需要注意，不同的状态，动作空间可能是不一样的。公式表示为：$\mathcal{A}(s_i)&#x3D;\left { a_i \right. } _{i&#x3D;1}^{5}$ . 可以看出，action是依赖于state的。</p><h1 id="State-transition：状态迁移"><a href="#State-transition：状态迁移" class="headerlink" title="State transition：状态迁移"></a>State transition：状态迁移</h1><p>​当采取一个action时，智能体可能会从一个state变到另一个state，这就叫做state transition。它实际上是定义智能体和环境交互的一种行为，我们可以（在本例子的游戏环境中）任意定义这一行为。</p><p>​比如说，我们在s1状态采取行动a1，也就是撞到边界，我们可以定义智能体保持不动:$\ce{s_1-&gt;[a1]s_1}$ ； 也可以定义会被撞到身后的格子: $\ce{s_1-&gt;[a1]s_4}$.</p>]]></content>
+        <content type="html"><![CDATA[<p>​从本文开始，均是针对哔哩哔哩网课的笔记记录。本文参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=05dba3ddf58ccccdd5db01aec71596cc">【强化学习的数学原理】课程：从零开始到透彻理解（完结）_哔哩哔哩_bilibili</a></p><p>​本文是对基本概念的介绍。</p><h1 id="笔记背景范例"><a href="#笔记背景范例" class="headerlink" title="笔记背景范例"></a>笔记背景范例</h1><p>​本课程的背景例子如图：</p><img src="https://s2.loli.net/2023/07/11/KDlXiugmkqw4YMj.png" alt="image-20230711105145024" style="zoom:50%;" /><p>​这是一个网格世界，我们的机器人要从给定的起点出发，寻找一个合适的路径到达我们的目的地(也就是我们的task)。机器人只能向相邻四个方格移动，且整个网格世界存在边界。我们的机器人要尽可能避免进入forbidden，且不能超越边界。    以此背景，我们介绍下面概念。</p><h1 id="State：状态"><a href="#State：状态" class="headerlink" title="State：状态"></a>State：状态</h1><p>​<strong>state</strong>是指智能体相对于环境所处的状态。在我们的例子中，不同的方格代表了不同的状态，是一个包含x，y二维坐标信息的向量。如图所示：</p><img src="https://s2.loli.net/2023/07/11/pVcWwRKzOIhYvyZ.png" alt="image-20230711105726622" style="zoom:50%;" /><p>​state space:即状态空间，也就是所有状态的集合：$\mathcal{S}&#x3D;{s_i } _{i&#x3D;1}^{9}$.   (打latex真累。。)</p><h1 id="Action：行动"><a href="#Action：行动" class="headerlink" title="Action：行动"></a>Action：行动</h1><p>​<strong>action</strong>是指对于每一个状态，智能体拥有的一系列可以采取的行动。对我们的例子来说，共有如下五个状态：</p><img src="https://s2.loli.net/2023/07/11/D21RaXl9OKnPjZm.png" alt="image-20230711110637375" style="zoom:50%;" /><p>​a1~a5依次是向上、向右、向下、向左已经保持不动。</p><p>​<strong>Action space of a state</strong>： 某个状态的动作空间。需要注意，不同的状态，动作空间可能是不一样的。公式表示为：$\mathcal{A}(s_i)&#x3D;{ a_i } _{i&#x3D;1}^{5}$ . 可以看出，action是依赖于state的。</p><h1 id="State-transition：状态迁移"><a href="#State-transition：状态迁移" class="headerlink" title="State transition：状态迁移"></a>State transition：状态迁移</h1><p>​当采取一个action时，智能体可能会从一个state变到另一个state，这就叫做state transition。它实际上是定义智能体和环境交互的一种行为，我们可以（在本例子的游戏环境中）任意定义这一行为。</p><p>​比如说，我们在s1状态采取行动a1，也就是撞到边界，我们可以定义智能体保持不动:$\ce{s_1-&gt;[a1]s_1}$ ； 也可以定义会被撞到身后的格子: $\ce{s_1-&gt;[a1]s_4}$.</p>]]></content>
       
       
       <categories>
@@ -466,9 +466,9 @@
     
     
     <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -477,9 +477,9 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

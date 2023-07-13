@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Nerual MMO 学习笔记(二) | 雨白的博客小屋</title><meta name="author" content="Ameshiro"><meta name="copyright" content="Ameshiro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​ 首先按照这个官网的挨个来：Introduction — Neural MMO v1.6.0 1.6.0 documentation ​  ​ 首先是介绍：它说Neural MMO是一个开源且可计算访问（不太明白这俩词合在一起啥意思）的研究平台，一大堆智能体联合生存+探索+战斗持续数小时，以以及完成任务。它在其他环境下这种大规模的研究可能不切实际或不可能进行，也就是NMMO具有大规模的特">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Nerual MMO 学习笔记(二) | 雨白的博客小屋</title><meta name="author" content="Ameshiro"><meta name="copyright" content="Ameshiro"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="​ 首先按照这个官网的挨个来：Introduction — Neural MMO v1.6.0 1.6.0 documentation ​  ​ 首先是介绍：它说Neural MMO是一个开源且可计算访问（不太明白这俩词合在一起啥意思）的研究平台，一大堆智能体联合生存+探索+战斗持续数小时，以以及完成任务。它在其他环境下这种大规模的研究可能不切实际或不可能进行，也就是NMMO具有大规模的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nerual MMO 学习笔记(二)">
 <meta property="og:url" content="https://www.ameshiro77.cn/posts/40807c9f.html">
 <meta property="og:site_name" content="雨白的博客小屋">
-<meta property="og:description" content="​ 首先按照这个官网的挨个来：Introduction — Neural MMO v1.6.0 1.6.0 documentation ​  ​ 首先是介绍：它说Neural MMO是一个开源且可计算访问（不太明白这俩词合在一起啥意思）的研究平台，一大堆智能体联合生存+探索+战斗持续数小时，以以及完成任务。它在其他环境下这种大规模的研究可能不切实际或不可能进行，也就是NMMO具有大规模的特">
+<meta property="og:description" content="​ 首先按照这个官网的挨个来：Introduction — Neural MMO v1.6.0 1.6.0 documentation ​  ​ 首先是介绍：它说Neural MMO是一个开源且可计算访问（不太明白这俩词合在一起啥意思）的研究平台，一大堆智能体联合生存+探索+战斗持续数小时，以以及完成任务。它在其他环境下这种大规模的研究可能不切实际或不可能进行，也就是NMMO具有大规模的">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2023/04/11/JFQOKRAnXuZSBUx.jpg">
 <meta property="article:published_time" content="2023-04-10T15:34:56.000Z">
-<meta property="article:modified_time" content="2023-04-10T16:12:22.352Z">
+<meta property="article:modified_time" content="2023-07-13T03:32:50.355Z">
 <meta property="article:author" content="Ameshiro">
 <meta property="article:tag" content="Newral MMO">
 <meta property="article:tag" content="强化学习">
@@ -59,7 +59,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-04-11 00:12:22'
+  postUpdate: '2023-07-13 11:32:50'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -275,38 +275,27 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/03/27/ec26kEVdfgCb7l9.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/04/11/JFQOKRAnXuZSBUx.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="雨白的博客小屋"><span class="site-name">雨白的博客小屋</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nerual MMO 学习笔记(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-10T15:34:56.000Z" title="发表于 2023-04-10 23:34:56">2023-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-10T16:12:22.352Z" title="更新于 2023-04-11 00:12:22">2023-04-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Neural-MMO/">Neural MMO</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">809</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nerual MMO 学习笔记(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​ 首先按照这个官网的挨个来：<a target="_blank" rel="noopener" href="https://neuralmmo.github.io/build/html/rst/landing.html">Introduction
+</style></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2023/03/27/ec26kEVdfgCb7l9.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/04/11/JFQOKRAnXuZSBUx.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="雨白的博客小屋"><span class="site-name">雨白的博客小屋</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Nerual MMO 学习笔记(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-04-10T15:34:56.000Z" title="发表于 2023-04-10 23:34:56">2023-04-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-07-13T03:32:50.355Z" title="更新于 2023-07-13 11:32:50">2023-07-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Neural-MMO/">Neural MMO</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">795</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Nerual MMO 学习笔记(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>​ 首先按照这个官网的挨个来：<a target="_blank" rel="noopener" href="https://neuralmmo.github.io/build/html/rst/landing.html">Introduction
 — Neural MMO v1.6.0 1.6.0 documentation</a></p>
-<p>​ <img src="https://s2.loli.net/2023/04/10/zFsWn2Iw7oh4ker.png" alt="image-20230410233958750"></p>
+<p>​
+<img src="https://s2.loli.net/2023/04/10/zFsWn2Iw7oh4ker.png" alt="image-20230410233958750" style="zoom:80%;"></p>
 <p>​ 首先是介绍：它说Neural
 MMO是一个开源且可计算访问（不太明白这俩词合在一起啥意思）的研究平台，一大堆智能体联合生存+探索+战斗持续数小时，以以及完成任务。它在其他环境下这种大规模的研究可能不切实际或不可能进行，也就是NMMO具有大规模的特点。</p>
 <p>​ 之后它贴了一串代码：</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/10/Jk1YAVsf6T2hXzW.png" alt="image-20230410234510556">
-<figcaption aria-hidden="true">image-20230410234510556</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/10/Jk1YAVsf6T2hXzW.png" alt="image-20230410234510556" style="zoom:80%;"></p>
 <p>​
 但显然我们目前没法安装nmmo，暂时没法试这个。但是我去pip库找的时候发现了一个叫neural-mmo的库，可能是nmmo库的历史版本（我猜的），不过暂时还没试。这个Env提供了标准的Petting
 Zoo API，详见：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/375049925">Pettingzoo：类似gym的多Agent强化学习的环境
 - 知乎 (zhihu.com)</a></p>
 <p>​
 之后它说NMMO是把经典MMO开发的技术应用到深度学习，并且介绍了一般的工作流程：</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/10/8Juoi5jDTX3atsv.png" alt="image-20230410234919966">
-<figcaption aria-hidden="true">image-20230410234919966</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/10/8Juoi5jDTX3atsv.png" alt="image-20230410234919966" style="zoom:80%;"></p>
 <p>​ 也就是生成环境——训练智能体——行为可视化。</p>
 <p>​ 之后它让我们安装nmmo（虽然目前安不上），以及clone三个库。</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/10/yrtGjI1Win8M5Jg.png" alt="image-20230410235041834">
-<figcaption aria-hidden="true">image-20230410235041834</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/10/yrtGjI1Win8M5Jg.png" alt="image-20230410235041834" style="zoom:80%;"></p>
 <p>​
 但是这三个库暂时压根不知道是干啥的，虽然在client里有一个unity的应用程序可以运行，但打开后的界面看不太懂，因为不管怎么操作都没有反应，就先不管这个了。。</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/10/eGdlY7KwfIPuaNg.png" alt="image-20230410235201312">
-<figcaption aria-hidden="true">image-20230410235201312</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/10/eGdlY7KwfIPuaNg.png" alt="image-20230410235201312" style="zoom:80%;"></p>
 <p>​ 到这里官方文档的User
 Guide就结束了，是不是感觉一头雾水。<strong>比较坑的是，这里还有一个仓库没有提及</strong>，我也不知道当时怎么找找到的这个github。这是由openai所发布的一个仓库,与上面那三个仓库是不同源的，地址为：<a target="_blank" rel="noopener" href="https://github.com/openai/neural-mmo">openai/neural-mmo: Code for
 the paper "Neural MMO: A Massively Multiagent Game Environment for
@@ -316,21 +305,12 @@ list的话可以看到，版本是0.4，我们改成0.2：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install opensimplex==<span class="number">0.2</span></span><br></pre></td></tr></table></figure>
 <p>​
 同时，会报一个scripy的错，说是没有imread、imsave。这也是版本问题，但是我直接下载老版本会出问题，解决方法是用另一个库：imageio</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/04/2AlxoveERj98Uz7.png" alt="image-20230404155701010">
-<figcaption aria-hidden="true">image-20230404155701010</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/04/2AlxoveERj98Uz7.png" alt="image-20230404155701010" style="zoom:80%;"></p>
 <p>​ pip install这个库，然后代码改成上图即可。</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/04/SEnY72NxryfCVt5.png" alt="image-20230404155728039">
-<figcaption aria-hidden="true">image-20230404155728039</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/04/SEnY72NxryfCVt5.png" alt="image-20230404155728039" style="zoom:80%;"></p>
 <p>​
 到此可以看出setup.py运行完毕，这个命令的作用应该是生成地图，在resource/maps/procedural里可以看到我们生成的地图。</p>
-<figure>
-<img src="https://s2.loli.net/2023/04/10/dKGAaS67PbwOH1D.png" alt="image-20230410235641217">
-<figcaption aria-hidden="true">image-20230410235641217</figcaption>
-</figure>
+<p><img src="https://s2.loli.net/2023/04/10/dKGAaS67PbwOH1D.png" alt="image-20230410235641217" style="zoom:80%;"></p>
 <p>​
 根据README.md里面的Quickstart，我们下载好了NMMO的环境和独立客户端，以进行渲染。注意python版本要3.6+，且拥有pytorch。之后按照它说的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python Forge.py --render <span class="comment">#Run the environment with rendering on</span></span><br></pre></td></tr></table></figure>

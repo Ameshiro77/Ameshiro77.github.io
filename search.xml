@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>强化学习-七</title>
-      <link href="/posts/9fd1c140.html"/>
-      <url>/posts/9fd1c140.html</url>
+      <title>强化学习(七):时序差分算法</title>
+      <link href="/posts/bcf230a0.html"/>
+      <url>/posts/bcf230a0.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>​ 这一章我们介绍Temporal-differencelearning，以及包含其中的Sarsa和Q-learning。</p>]]></content>
       
       
+      <categories>
+          
+          <category> 强化学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 强化学习 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -34,6 +46,8 @@
         <tags>
             
             <tag> 强化学习 </tag>
+            
+            <tag> RM算法 </tag>
             
         </tags>
       
@@ -599,28 +613,6 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>友链</title>
-      <link href="/link/index.html"/>
-      <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -632,9 +624,31 @@
     
     
     <entry>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tags</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

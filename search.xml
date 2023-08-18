@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>ml-agents 踩坑汇总</title>
+      <link href="/posts/4982421f.html"/>
+      <url>/posts/4982421f.html</url>
+      
+        <content type="html"><![CDATA[<p>​ ml-agents是一个应用于unity的MARL环境，但是用起来怪怪的，emm以此贴记录踩坑汇总。首先我想说一下这些环境安装起来太离谱了，各种包之间依赖关系非常混乱，版本问题也是让人头皮发麻，比如numpy在1.24后就没有np.float等等东西了，比如TensorFlow的1.x和2.x带来的巨多问题。。</p><h1 id="unable-to-convert-function-return-value-to-a-python-type">Unableto convert function return value to a Python type!</h1><p>报错信息为：</p><p><img src="https://s2.loli.net/2023/08/18/OE8ZoNgjCnRc31v.png"></p><p>但其实如果你往上自己看的话，他会先报一个numpy的错误。其实这个问题就是numpy和TensorFlow不兼容导致的，我也是搜外网才搜到的！！找了几个英语的和日语的，给出的解决方案是：</p><p><img src="https://s2.loli.net/2023/08/18/nEJaxmU9fBoAeql.png" alt="image-20230818191650505" style="zoom:67%;"></p><p>至于numpy和TensorFlow的对应兼容关系我找不到合理的，给大家提供一下我的作为参考吧：numpy1.21.6； TensorFlow2.6.0</p><p>再运行终于成功了：</p><p><img src="https://s2.loli.net/2023/08/18/qfvx6hAt72glByp.png" alt="image-20230818191756319" style="zoom:67%;"></p><p>真不容易啊，在TensorFlow手上不知道吃多少亏了，真的麻了。之前搞个MARL环境，忘了叫啥，因为原论文搞得1.x的版本还是啥，直接给我搞崩溃了（2.x变了一大堆东西）。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>强化学习(七):时序差分算法</title>
       <link href="/posts/bcf230a0.html"/>
       <url>/posts/bcf230a0.html</url>
@@ -602,9 +615,9 @@
     
     
     <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -613,9 +626,9 @@
     
     
     <entry>
-      <title>关于</title>
-      <link href="/about/index.html"/>
-      <url>/about/index.html</url>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -646,9 +659,9 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

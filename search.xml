@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>统一回复贴!</title>
+      <link href="/posts/826b43b5.html"/>
+      <url>/posts/826b43b5.html</url>
+      
+        <content type="html"><![CDATA[<p>​由于目前懒得作邮箱提醒，所以如果您要在某些帖子发评论的话我可能受不到，所以单独拎出来这个文章作为评论回复用！！</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>强化学习(八):值函数近似与DQN</title>
+      <link href="/posts/ba9722f3.html"/>
+      <url>/posts/ba9722f3.html</url>
+      
+        <content type="html"><![CDATA[<p>​之前我们介绍的是基于表格的方式，现在我们要介绍基于函数的方式。现在开始，我们要引入神经网络。此外，现在讲的都是基于值的，下次将介绍基于策略的。</p><p>​虽然我们没有明说，但我们目前为止确实是以表格方式存储数据的，比如：</p><p><img src="https://s2.loli.net/2023/08/19/tZM3jCn76SDQKRL.png" alt="image-20230819213910909" style="zoom:67%;"></p><p>​ 显然当state space连续或者巨大无比的时候，这种方式就不能用了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 强化学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 强化学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ml-agents 踩坑汇总</title>
       <link href="/posts/4982421f.html"/>
       <url>/posts/4982421f.html</url>
@@ -615,6 +653,17 @@
     
     
     <entry>
+      <title>时间线</title>
+      <link href="/archives/index.html"/>
+      <url>/archives/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -637,9 +686,9 @@
     
     
     <entry>
-      <title>时间线</title>
-      <link href="/archives/index.html"/>
-      <url>/archives/index.html</url>
+      <title>tags</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -651,17 +700,6 @@
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>tags</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       

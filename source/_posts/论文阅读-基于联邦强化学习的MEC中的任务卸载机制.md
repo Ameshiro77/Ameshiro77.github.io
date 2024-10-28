@@ -30,6 +30,5 @@ highlight_shrink:
 aside:
 ---
 
-论文地址：[Task offloading mechanism based on federated reinforcement learning in mobile edge computing - ScienceDirect](https://www.sciencedirect.com/science/article/pii/S2352864822000554)，SCI一区，IF7.5
+## 
 
-# 摘要

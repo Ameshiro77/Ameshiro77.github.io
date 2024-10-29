@@ -7,7 +7,10 @@ cover: 'https://s2.loli.net/2023/04/03/pvexKZFJ94oGbu8.jpg'
 toc: true
 mathjax: true
 copyright_author: Ameshiro
-hidden:true
+hidden: true
+categories:
+  - AI无线通信
+abbrlink: 72eb9624
 date: 2024-07-30 22:51:16
 updated:
 description:
@@ -16,8 +19,6 @@ top_img:
 password:
 summary:
 tags:
-categories:
-  - AI无线通信
 copyright:
 copyright_author_href:
 copyright_url:

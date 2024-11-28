@@ -8,6 +8,7 @@ toc: true
 mathjax: true
 copyright_author: Ameshiro
 hidden: false
+abbrlink: 9db59dd
 date: 2024-11-12 21:48:16
 updated:
 description:
@@ -64,7 +65,7 @@ aside:
 
 ​	本文的联邦生成模型框架为一个三层架构，底层是IoT设备，中间是边缘服务器，顶层是一个云服务器。特别地，每个边缘服务器都位于覆盖本地区域的基站下，与覆盖的物联网设备构成一个local community。系统图：
 
-![系统图](https://cdn.jsdelivr.net/gh/Ameshiro77/BlogPicture/pic/image-20241113114105077.png)
+![系统图](https://raw.githubusercontent.com/Ameshiro77/BlogPicture/main/pic/image-20241113114105077.png)
 
 ​	为了数据生成，每个IoT设备上部署一个discriminator，每个边缘服务器上部署一个community generator，在云服务器上部署一个global generator。定义K是区域数量，$J_k$是第k个区域内的判别器集合，$D_{kj}$是第k个区域的第j个IoT的判别器。
 
@@ -119,7 +120,7 @@ $$
 
 ​	这种场景下，不同区域数据集特征不一样但标签一样。例如，车联网中，一个区域负责车辆拍照，一个区域负责传输雷达数据，但它们有同样的标签。以下图为例：三个区域都是数字标签，但是数据特征在背景颜色、亮度上都不一样。全局生成器旨在根据同一标签生成不同域的数据，因此需要在云服务器加一个分类器C来区分生成数据的原始来源。
 
-![image](https://cdn.jsdelivr.net/gh/Ameshiro77/BlogPicture/pic/image-20241113150703496.png)
+![image](https://raw.githubusercontent.com/Ameshiro77/BlogPicture/main/pic/image-20241113150703496.png)
 
 ## 生成器	
 

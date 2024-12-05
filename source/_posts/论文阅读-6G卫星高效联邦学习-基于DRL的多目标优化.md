@@ -30,6 +30,8 @@ highlight_shrink:
 aside:
 ---
 
+[Efficient Federated Learning in 6G-Satellite Systems: Deep Reinforcement Learning Based Multi-Objective Optimization | IEEE Conference Publication | IEEE Xplore](https://ieeexplore.ieee.org/document/10571246)
+
 # 摘要
 
 ​	基于无线的FL作为新兴的**分布式学习**方法，在6G系统中被广泛研究。当这一范式从地面网络转移到非地面网络，就会有更多挑战：例如LEO卫星服务时间有限、需要高效的上传和聚合时间。本文中，作者利用了**LEO广泛的接入能力和FL的隐私保护和协作学习能力**。与大多数FL工作不同，本文从多目标优化（MOO）的角度同时**提高了通信训练效率和局部训练精度**。为此，作者提出了一种基于分解、DRL和迁移学习的FL MOO算法DRT-FL，旨在动态适应星地环境，实现高效上传聚合，并逼近pareto最优集合（多目标优化问题上的帕累托最优）。
@@ -129,3 +131,5 @@ $$
 ​	用了MLP和两种CNN做全局模型，数据集用MNIST和CIFAR-10。在训练阶段，数据样本随机分布给各设备，**并采用了IID或者NON-IID的设置**。但本文并没有对non-iid再做说明了。
 
 ​	本文主要探讨了未来6G卫星网络的场景，虽然提到了挑战包括异构设备但仅仅是提到了然后没然后了。
+
+​	在这种背景下，可能考虑的：对于具体模型的异构处理？采用模型参数量化进一步减少开销？等等。

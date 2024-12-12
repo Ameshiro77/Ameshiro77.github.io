@@ -8,6 +8,9 @@ toc: true
 mathjax: true
 copyright_author: Ameshiro
 hidden: false
+categories:
+  - 论文阅读
+abbrlink: 667e3ef3
 date: 2024-12-09 23:04:11
 updated:
 description:
@@ -16,8 +19,6 @@ top_img:
 password:
 summary:
 tags:
-categories:
-  - 论文阅读
 copyright:
 copyright_author_href:
 copyright_url:

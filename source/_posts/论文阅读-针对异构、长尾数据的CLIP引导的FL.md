@@ -9,7 +9,7 @@ mathjax: true
 copyright_author: Ameshiro
 hidden: false
 categories:
-  - 论文阅读
+  - AI无线通信
 abbrlink: 667e3ef3
 date: 2024-12-09 23:04:11
 updated:
@@ -19,6 +19,7 @@ top_img:
 password:
 summary:
 tags:
+  - 论文阅读
 copyright:
 copyright_author_href:
 copyright_url:
@@ -113,3 +114,13 @@ $$
 ![image](https://raw.githubusercontent.com/Ameshiro77/BlogPicture/main/pic/image-20241212123450942.png)
 
 ​	这是作者实验结果。
+
+​	实验分为20个客户端，数据分布长尾、非iid：
+
+<img src="https://cdn.jsdelivr.net/gh/Ameshiro77/BlogPicture/pic/image-20241219165948693.png" alt="image-20241219165948693" style="zoom: 67%;" />
+
+​	但是本文没有考虑到的是：
+
+<img src="https://cdn.jsdelivr.net/gh/Ameshiro77/BlogPicture/pic/image-20241219170111547.png" alt="image-20241219170111547" style="zoom:80%;" />
+
+​	没有考虑到设备的异构性，即不同设备的通信能力、计算能力不一样。

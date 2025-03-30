@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "add": "^2.0.6",
-    "hexo": "^5.0.0",
+    "hexo": "^7.3.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "github:hexojs/hexo-deployer-git",
     "hexo-filter-mathjax": "^0.9.0",

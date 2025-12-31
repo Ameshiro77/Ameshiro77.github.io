@@ -136,3 +136,7 @@ hide_posts:
 
 mathjax:
   every_page: true 
+
+marked:
+  gfm: true
+  breaks: false

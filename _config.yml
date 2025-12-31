@@ -139,4 +139,11 @@ mathjax:
 
 marked:
   gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
   breaks: false
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true

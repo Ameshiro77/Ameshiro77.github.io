@@ -56,6 +56,10 @@ i:hover {
 	cursor: url('./mouse/Cross.cur'), auto;
 }
 
+/* .post-content p {
+    text-indent: 2em !important;
+} */
+
 /* ===end=== */
 /* 顶部加载条 */
 /*顶部加载进度条*/

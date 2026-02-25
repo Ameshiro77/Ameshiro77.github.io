@@ -659,6 +659,13 @@
   </url>
   
   <url>
+    <loc>https://www.ameshiro77.cn/tags/%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0-%E7%A6%BB%E7%BA%BF%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ameshiro77.cn/tags/Node-js/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -680,7 +687,7 @@
   </url>
   
   <url>
-    <loc>https://www.ameshiro77.cn/tags/%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0-%E7%A6%BB%E7%BA%BF%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://www.ameshiro77.cn/tags/pytorch/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -695,13 +702,6 @@
   
   <url>
     <loc>https://www.ameshiro77.cn/tags/openCV/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ameshiro77.cn/tags/pytorch/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -736,6 +736,13 @@
   </url>
   
   <url>
+    <loc>https://www.ameshiro77.cn/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ameshiro77.cn/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -744,13 +751,6 @@
   
   <url>
     <loc>https://www.ameshiro77.cn/tags/DQN/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ameshiro77.cn/tags/%E8%B4%9D%E5%B0%94%E6%9B%BC%E6%96%B9%E7%A8%8B/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -820,6 +820,13 @@
   </url>
   
   <url>
+    <loc>https://www.ameshiro77.cn/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</loc>
+    <lastmod>2026-02-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ameshiro77.cn/tags/%E7%94%9F%E6%88%90%E5%BC%8FAI/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
@@ -828,13 +835,6 @@
   
   <url>
     <loc>https://www.ameshiro77.cn/tags/GAN/</loc>
-    <lastmod>2026-02-25</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ameshiro77.cn/tags/%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -871,14 +871,14 @@
   </url>
   
   <url>
-    <loc>https://www.ameshiro77.cn/categories/openCV/</loc>
+    <loc>https://www.ameshiro77.cn/categories/pytorch/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ameshiro77.cn/categories/pytorch/</loc>
+    <loc>https://www.ameshiro77.cn/categories/openCV/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

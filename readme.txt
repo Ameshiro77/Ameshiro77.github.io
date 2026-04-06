@@ -1,6 +1,7 @@
 ！！！使用须知：
 
 必须依次执行：git pull；然后hexo new post 下文章；然后git add .，git commit -m / ,git push origin hexo;
+git add . && git commit -m "1" && git push origin hexo
 
 最后再hexo cl && hexo g && hexo d.
 
